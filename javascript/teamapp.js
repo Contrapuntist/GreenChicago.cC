@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 		// functions 
 		init: function {
-			console.log ('app initiated')
+			console.log ('app gowri initiated')
 		}
 
 	}
