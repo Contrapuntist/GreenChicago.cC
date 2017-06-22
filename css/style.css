@@ -1,0 +1,14 @@
+
+/*added google fonts to get file to load to github.*/
+
+body, h3 {
+	font-family: 'Catamaran', sans-serif;
+} 
+
+h1, h2 {
+	font-family: 'Philosopher', sans-serif;	
+}  
+
+.hulkimg {
+	width: 100%;
+}
