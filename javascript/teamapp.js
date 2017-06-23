@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-// firebase code  
+firebase code  
 
   firebase.initializeApp(config);
   var database = firebase.database(); 
@@ -27,13 +27,15 @@ appObj.init();
 
 });
 
+var lat = "47.59";
+var lon = "-122.33"
 
 // Park API
 $.ajax({
-    url: "https://data.cityofchicago.org/resource/4xwe-2j3y.json?location_address=500 E 130TH ST? https://data.cityofchicago.org/resource/4xwe-2j3y.json?$where=within_circle(location, 47.59, -122.33, 1000)?location_city=FOO?location_zip=60627",
+    url: "https://data.cityofchicago.org/resource/4xwe-2j3y.json?$where=within_circle(location, 41.883811, -87.631749, 1000)",
     type: "GET",
     data: {
-      "$limit" : 5000,
+      "$limit" : 5,
       "$$app_token" : 
     }
 }).done(function(data) {
