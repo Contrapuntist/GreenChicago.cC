@@ -1,29 +1,12 @@
 
-  firebase.initializeApp(altFuelConfig);
-  var database = firebase.database();
-
-// GLOBAL VARIABLES
-
-
-// PUSHES DATA TO DATABASE ON SUBMIT
-
-function pushStations() {
-
-    database.ref().push({
-    name: name,
-    latitude: latitude,
-    longitude: longitude,
-    city: city,
-    });
-
-  };
-
+firebase.initializeApp(altFuelConfig);
+var database = firebase.database();
 
 
 function getStations() {
 		
 
-		var url = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&state=IL&api_key=kB2SaaDEdXCxCix259XMS6pGe9xe0ReaQAcBmkp8&format=JSON"
+		var url = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&state=IL&api_key=kB2SaaDEdXCxCix259XMS6pGe9xe0ReaQAcBmkp8&format=JSON";
 
 
 		console.log(url);
@@ -37,7 +20,6 @@ function getStations() {
 			}).done(function(data){
 				var limitNum = data.total_results;
 				for (var i = 0; i < limitNum; i++) {
-					//object = [];
 					var name = (data.fuel_stations[i].station_name);
 					var latitude = (data.fuel_stations[i].latitude);
 					var longitude = (data.fuel_stations[i].longitude);
@@ -45,6 +27,7 @@ function getStations() {
 					var zip = (data.fuel_stations[i].zip);
 					var address = (data.fuel_stations[i].street_address);
 					var state = (data.fuel_stations[i].state);
+					var id = (data.fuel_stations[i].id);
 
 				loopObject = {
     				lat: latitude,
@@ -53,18 +36,18 @@ function getStations() {
     				address: address,
     				city: city,
     				state: state,
-    				name: name
+    				name: name,
+    				id: id
     			};
 
-    			console.log(loopObject);
+    			//console.log(loopObject);
     			stationArray.push(loopObject);
-    			console.log(stationArray);
-
+    			//console.log(stationArray);
+    			//database.ref("alt-fuel").push(loopObject);
 				};
     			database.ref("alt-fuel").push(stationArray);
 			});
-
-	};
+};
 
 getStations();
 
