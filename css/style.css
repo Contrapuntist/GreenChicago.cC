@@ -1,5 +1,10 @@
 
 /*added google fonts to get file to load to github.*/
+html, body, .mapwrapper {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
 body, h3 {
 	font-family: 'Catamaran', sans-serif;
@@ -12,3 +17,6 @@ h1, h2 {
 .hulkimg {
 	width: 100%;
 }
+
+
+
