@@ -1,13 +1,11 @@
-var lat = "47.59";
-var lon = "-122.33"
+console.log(parkApiKey);
 
 // Park API
 $.ajax({
-    url: "https://data.cityofchicago.org/resource/4xwe-2j3y.json?$where=within_circle(location, 41.883811, -87.631749, 1000)",
+    url: "https://data.cityofchicago.org/resource/4xwe-2j3y.json",
     type: "GET",
     data: {
-      "$limit" : 5,
-      "$$app_token" : 
+      "$$app_token" : parkApiKey
     }
 }).done(function(data) {
   alert("Retrieved " + data.length + " records from the dataset!");
