@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 //firebase code  
 
   firebase.initializeApp(config);
@@ -26,6 +27,7 @@ appObj.init();
 
 
 });
+
 
 
 
