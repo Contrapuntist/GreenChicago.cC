@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-firebase code  
+/*firebase code  
 
   firebase.initializeApp(config);
   var database = firebase.database(); 
@@ -21,7 +21,7 @@ firebase code
 
 
 // app initiate function 
-appObj.init();
+appObj.init();*/
 
 
 
@@ -36,7 +36,7 @@ $.ajax({
     type: "GET",
     data: {
       "$limit" : 5,
-      "$$app_token" : 
+      //"$$app_token" : 
     }
 }).done(function(data) {
   alert("Retrieved " + data.length + " records from the dataset!");
