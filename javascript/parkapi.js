@@ -1,3 +1,6 @@
+firebase.initializeApp(config);
+var database = firebase.database()
+
 console.log(parkApiKey);
 
 var stationArray = [];
@@ -12,32 +15,36 @@ $.ajax({
     }
 }).done(function(data) {
   	alert("Retrieved " + data.length + " records from the dataset!");
-  	console.log(data);
-  	
-		// for (var i = 0; i < 10; i++) {
-		// 	//object = [];
-		// 	var name = (data.fuel_stations[i].station_name);
-		// 	var latitude = (data.fuel_stations[i].latitude);
-		// 	var longitude = (data.fuel_stations[i].longitude);
-		// 	var city = (data.fuel_stations[i].city);
-		// 	var zip = (data.fuel_stations[i].zip);
-		// 	var address = (data.fuel_stations[i].street_address);
-		// 	var state = (data.fuel_stations[i].state);
+  	console.log(data[0]);
 
-		// loopObject = {
-		// 	lat: latitude,
-		// 	long: longitude,
-		// 	zip: zip,
-		// 	address: address,
-		// 	city: city,
-		// 	state: state,
-		// 	name: name
-		// };
+	for (var i = 0; i < 10; i++) {
 
+		if(data[i].location_zip) {
+			var name = (data[i].park_name);
+			var latitude = null;
+			var longitude = null;
+			var city = "Chicago";
+			var zip = (data[i].location_zip);
+			var address = (data[i].location_address);
+			var state = "IL";
+			var id = (data[i].park_number);
 
-		// stationArray.push(loopObject);
-		// };
-		// database.ref().push(stationArray);
+			loopObject = {
+				lat: latitude,
+				long: longitude,
+				zip: zip,
+				address: address,
+				city: city,
+				state: state,
+				name: name,
+				id: id
+			};
+		}
+
+		stationArray.push(loopObject);
+	};
+
+	database.ref("Park").push(stationArray);
 
 });
 
