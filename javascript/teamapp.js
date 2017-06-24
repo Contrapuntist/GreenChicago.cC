@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-firebase code  
+//firebase code  
 
   firebase.initializeApp(config);
   var database = firebase.database(); 
@@ -10,14 +10,14 @@ firebase code
   var appObj = {
 
     // global variables 
-    database: firebase.database(); 
+    database: firebase.database(),
 
     // functions 
-    init: function {
+    init: function () {
       console.log ('app gowri initiated')
     }
 
-  }
+  };
 
 
 // app initiate function 
