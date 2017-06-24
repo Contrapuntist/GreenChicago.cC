@@ -3,7 +3,6 @@ $(document).ready(function() {
 
 //firebase code  
 
-
   firebase.initializeApp(config);
   var database = firebase.database(); 
 
