@@ -1,10 +1,7 @@
 $(document).ready(function() {
 
-
-//firebase code  
-
-  firebase.initializeApp(config);
-  var database = firebase.database(); 
+// firebase code  
+ 
 
 
 // App object 
@@ -24,10 +21,7 @@ $(document).ready(function() {
 // app initiate function 
 appObj.init();
 
-
-
 });
-
 
 
 
