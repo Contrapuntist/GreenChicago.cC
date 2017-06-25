@@ -5,6 +5,24 @@ var pos={
   lng: -87.6298
 };
 
+firebase.initializeApp(config);
+var readDb=firebase.database();
+var curCat='alt-fuel';
+var searchZip='60606';
+var markerArray=[];
+
+readData(curCat);
+
+//To read data from firebase based on category passed
+function readData(curCat){
+  readDb.ref(curCat).once('value').then(function(snapshot){
+    var dispData = snapshot.val();
+    var key=Object.keys(dispData);
+    placeMultiMarkers(dispData[key]);
+
+  });
+}
+
 //This is the initialize the map on load
 function initMap() {  
     /*user HTML5 geolocation to get browser location if success calls
@@ -21,6 +39,51 @@ function initMap() {
           console.log('I am in old browser');
     }
 }
+
+//This is to display the markers based on search category and location
+function placeMultiMarkers(dispData){
+  console.log('I am in multi marker');
+  for (i=0; i<dispData.length; i++)
+  {
+    console.log('in for')
+      if(dispData[i].zip===searchZip){
+        console.log(dispData[i]);
+        findLatLng(dispData[i]);
+      }
+  }
+  
+  console.log(markerArray);
+ // console.log(markerArray[0].length);
+  for(j=0;j<markerArray.length;j++){
+    console.log('i am in multimarker');
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(markerArray[i][0],markerArray[i][1]),
+      map: map
+    });
+  }
+}
+
+//Find Lat and Long using address
+function findLatLng(location){
+
+    var tmpAddress=[];
+    tmpAddress.push(location.address.split(' ').join('+'), location.city.split(' ').join('+'), location.state.split(' ').join('+'));
+    var curAddress=tmpAddress.join(',');
+    console.log(curAddress);
+    var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
+    console.log(getLatLng);
+    $.ajax({
+      url: getLatLng,
+      method: "GET"
+      }).done(function(response){
+        pos.lat=response.results[0].geometry.location.lat;
+        pos.lng=response.results[0].geometry.location.lng;
+        var tmp=[];
+        tmp.push(pos.lat, pos.lng);
+        markerArray.push(tmp);
+    });
+}
+
 
 //when location is enabled in browser and user allowed it
 function geoLocSucess(position){
@@ -43,22 +106,25 @@ function geoLocFail(position){
 function displayMap(){
     map = new google.maps.Map(document.getElementById('googlemaptest'), {
             center: pos,
-            zoom: 6
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
       });
       placeMarkerAndPanTo(pos, map);
+
 }
 
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
-
+var marker;
 function placeMarkerAndPanTo(latLng, map) {
-    var marker = new google.maps.Marker({
-      position: latLng,
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(latLng.lat,latLng.lng),
       map: map
     });
-    map.panTo(latLng);
+    console.log(latLng);
+    //map.panTo(latLng);
 
-  }
+}
 
 /*This call will only work with some synchronous call & wait because
 otherwise the call always have it as null need to figure this*/
