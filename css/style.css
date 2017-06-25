@@ -1,5 +1,9 @@
 
 /*added google fonts to get file to load to github.*/
+
+/*Do not change this because the Map API needs its Div and 
+its container divs to have height defined otherwise it will 
+not display*/
 html, body, .mapwrapper {
     margin: 0;
     padding: 0;
