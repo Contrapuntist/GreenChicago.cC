@@ -1,8 +1,6 @@
 $(document).ready(function() {
 
 
-
-
 // App object 
   var appObj = {
 
@@ -17,17 +15,21 @@ $(document).ready(function() {
 
   };
 
+var goodaddress = null; 
+
 
 // app initiate function 
 appObj.init();
 
-console.log (database.ref("greenRoofs").orderByChild(""));
+// console.log (database.ref("greenRoofs").orderByChild(""));
 
 	$('#searchbtn').on('click', function() { 
+		var adr = null;
 		console.log('search button clicked');
-		appObj.address = $("#srchinput").val().trim();
+		adr = $("#address").val().trim();  
+		appObj.address = adr.split().join("+");
 		console.log(appObj.address);
-
+		verifyAddress(appObj.address);
 
 	// *** Possible option to check for valid input. But need method to sift through firebase too.  
     
@@ -47,29 +49,39 @@ console.log (database.ref("greenRoofs").orderByChild(""));
 	});
 
 
-// prepping USPS ajax call for address validation on search input.    
+	// prepping USPS ajax call for address validation on search input.    
+	// var uspsurl = 'https://servername/ShippingAPI.dll?API=Verify&XML=<AddressValidateRequest USERID="'+ username + '"><Address ID="0"><Address2>661 Hapsfield Lane</Address2><City>Buffalo Grove</City><State>IL</State><Zip5>60089</Zip5><Zip4></Zip4></Address></AddressValidateRequest>';
+	// console.log(uspsurl);
 
-var uspsurl = null;  
+	function verifyAddress (address) { 
 
-// AddressValidateRequest USERID=uspsID 
+		var googleGeoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + macgoogAPI ;
 
-$.$.ajax({
-	url: uspsurl, 
-	type: 'default GET (Other values: POST)',
-	dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-	data: {param1: 'value1'},
-})
-.done(function() {
-	console.log("success");
-})
-.fail(function() {
-	console.log("error");
-})
-.always(function() {
-	console.log("complete");
-});
+		// AddressValidateRequest USERID=uspsID 
 
+		$.ajax({
+			url: googleGeoURL, 
+			type: 'Get',
+		})
+		.done(function(data) {
+			console.log(data);
+			console.log("success");
+			console.log(data.status); 
+			if (data.status === "ok") { 
+				return goodaddress = true;
+			} else { 
+				alert("you didn't enter a real address");
+			}
+			console.log(goodaddress)
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
 
+	}	
 
 });
 
