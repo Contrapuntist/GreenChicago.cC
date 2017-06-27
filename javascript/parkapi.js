@@ -1,7 +1,5 @@
-firebase.initializeApp(config);
-var database = firebase.database()
-
-console.log(parkApiKey);
+require("./gmap");
+console.log(curCat);
 
 var stationArray = [];
 var loopObject = {};
@@ -21,8 +19,8 @@ function getParks() {
 
 			if(data[i].location_zip) {
 				var name = (data[i].park_name);
-				var latitude = null;
-				var longitude = null;
+				var latitude = getLatitude(data[i].location_address, "CHICAGO", "IL");
+				var longitude = getLongitude(data[i].location_address, "CHICAGO", "IL");
 				var city = "CHICAGO";
 				var zip = (data[i].location_zip);
 				var address = (data[i].location_address);
