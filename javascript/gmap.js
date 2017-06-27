@@ -11,17 +11,54 @@ var curCat='alt-fuel';
 var searchZip='60606';
 var markerArray=[];
 
-readData(curCat);
+// Specifies 1st node in firebase for alt-fuel
+var dbChild = '-KnQWmrvNl34dXBFVzss'; 
+
+readData(curCat); // hard coded alt-fuel key 
+
+
 
 //To read data from firebase based on category passed
 function readData(curCat){
-  readDb.ref(curCat).once('value').then(function(snapshot){
+  return readDb.ref(curCat).child(dbChild).once('value').then(function(snapshot){
     var dispData = snapshot.val();
-    var key=Object.keys(dispData);
-    placeMultiMarkers(dispData[key]);
+    var key=Object.keys(dispData); 
+    arrayLength = dispData.length;
+    console.log(key);
+    console.log(dispData);
+    console.log(arrayLength);
+    placeMultiMarkers(key);
 
   });
 }
+
+
+// **************************
+// MIGUEL TEST ARRAY FUNCTION  
+
+var arrayLength = null;
+var testArray = [];
+var counter = 0;
+function testRetrieve () { 
+  readDb.ref(curCat).child(dbChild).once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+      // console.log(childKey);
+      // console.log(childData);
+      testArray.push(childData);
+      counter++;
+      // ...
+    });
+  });
+  console.log(testArray);
+  console.log(counter);
+}
+testRetrieve();
+
+// END MIGUEL TEST CODE 
+// **********************************
+
 
 //This is the initialize the map on load
 function initMap() {  
@@ -43,9 +80,10 @@ function initMap() {
 //This is to display the markers based on search category and location
 function placeMultiMarkers(dispData){
   console.log('I am in multi marker');
-  for (i=0; i<dispData.length; i++)
-  {
-    console.log('in for')
+  console.log(dispData);
+  for (i=0; i< arrayLength ; i++) { 
+
+      console.log('in for')
       if(dispData[i].zip===searchZip){
         console.log(dispData[i]);
         findLatLng(dispData[i]);
@@ -53,7 +91,7 @@ function placeMultiMarkers(dispData){
   }
   
   console.log(markerArray);
- // console.log(markerArray[0].length);
+  // console.log(markerArray[0].length);
   for(j=0;j<markerArray.length;j++){
     console.log('i am in multimarker');
     marker = new google.maps.Marker({

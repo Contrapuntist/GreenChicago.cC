@@ -1,7 +1,6 @@
-
-
 $(document).ready(function() {
-firebase.initializeApp(config); 
+
+// firebase.initializeApp(config); 
 var database = firebase.database();
 
 function getGreenRoofsData () { 
@@ -39,41 +38,10 @@ function getGreenRoofsData () {
 	}
 
 getGreenRoofsData ();
+
 });
 
 
-		// var stationArray = [];
-		// var loopObject = {};
 
-		// 	$.ajax({
-		// 		url: url,
-		// 		method: "GET"
-		// 	}).done(function(data){
-		// 		var limitNum = data.total_results;
-		// 		for (var i = 0; i < limitNum; i++) {
-		// 			var name = (data.fuel_stations[i].station_name);
-		// 			var latitude = (data.fuel_stations[i].latitude);
-		// 			var longitude = (data.fuel_stations[i].longitude);
-		// 			var city = (data.fuel_stations[i].city);
-		// 			var zip = (data.fuel_stations[i].zip);
-		// 			var address = (data.fuel_stations[i].street_address);
-		// 			var state = (data.fuel_stations[i].state);
-
-		// 		loopObject = {
-  //   				lat: latitude,
-  //   				long: longitude,
-  //   				zip: zip,
-  //   				address: address,
-  //   				city: city,
-  //   				state: state,
-  //   				name: name
-  //   			};
-
-  //   			//console.log(loopObject);
-  //   			stationArray.push(loopObject);
-		// 		};
-
-  //   		database.ref("alt-fuel").push(stationArray);
-		// 	});
 
 

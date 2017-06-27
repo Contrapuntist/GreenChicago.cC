@@ -1,6 +1,6 @@
 
-//firebase.initializeApp(config);
-//var database = firebase.database();
+// firebase.initializeApp(altFuelConfig);
+var database = firebase.database();
 
 
 function getStations() {
