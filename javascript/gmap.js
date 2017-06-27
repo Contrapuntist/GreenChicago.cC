@@ -18,7 +18,8 @@ function readData(curCat){
   readDb.ref(curCat).once('value').then(function(snapshot){
     var dispData = snapshot.val();
     var key=Object.keys(dispData);
-    placeMultiMarkers(dispData[key]);
+    //placeMultiMarkers(dispData[key]);
+    console.log(dispData[key]);
 
   });
 }
@@ -67,8 +68,31 @@ function placeMultiMarkers(dispData){
   }
 }
 
+
 //Find Lat and Long using address
-function findLatLng(location){
+function getLatitude(street, city, state){
+
+    var tmpAddress=[];
+    tmpAddress.push(street.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
+    var curAddress=tmpAddress.join(',');
+    console.log(curAddress);
+    var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
+    console.log(getLatLng);
+    $.ajax({
+      url: getLatLng,
+      method: "GET"
+      }).done(function(response){
+        /*pos.lat=response.results[0].geometry.location.lat;
+        pos.lng=response.results[0].geometry.location.lng;
+        var tmp=[];
+        tmp.push(pos.lat, pos.lng);
+        markerArray.push(tmp);*/
+        return response.results[0].geometry.location.lat;
+    });
+}
+
+//Find Lat and Long using address
+function getLongitude(street, city, state){
 
     var tmpAddress=[];
     tmpAddress.push(location.address.split(' ').join('+'), location.city.split(' ').join('+'), location.state.split(' ').join('+'));
@@ -80,11 +104,12 @@ function findLatLng(location){
       url: getLatLng,
       method: "GET"
       }).done(function(response){
-        pos.lat=response.results[0].geometry.location.lat;
+        /*pos.lat=response.results[0].geometry.location.lat;
         pos.lng=response.results[0].geometry.location.lng;
         var tmp=[];
         tmp.push(pos.lat, pos.lng);
-        markerArray.push(tmp);
+        markerArray.push(tmp);*/
+        return response.results[0].geometry.location.lng;
     });
 }
 
