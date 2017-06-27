@@ -18,27 +18,30 @@
     
     </head>
     <body>
-        <div class="container">
+        <div class="container mapwrapper">
             
             <div class="jumbotron">
-            <h1 class="text-center">ChiGreen App</h1>
-            <h3 class="text-center">Let's roll folks</h3>           
-        </div> 
+
+                <h1 class="text-center">ChiGreen App</h1>
+                <h3 class="text-center">Let's roll folks</h3>    
+                <P>Cool Easter Egg</P>       
+            </div> 
+
             
-            <div class="row">
-                <div class="col-lg-8">
+            <div class="row mapwrapper">
+                <div class="col-lg-8 mapwrapper">
                     <h3>Maps Placeholder</h3>
-                    <div id="googlemaptest"></div>  
+                    <div id="googlemaptest" class='mapwrapper'></div>
                 </div> 
                 <div class="col-lg-4">
-                    
+                    <img class="hulkimg" src="images/ironman.jpg">
                 </div>          
             </div>
              
             <div class="row">
                 <div class="col-lg-12">
                     <h3>Other API testing placeholder</h3> 
-                    <div id="api-test"></div>        
+                    <div id="apitest"></div>        
                 </div>
                 
             </div>
@@ -50,8 +53,14 @@
         <!-- jQuery and JS file calls -->   
       <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
         <script type="text/javascript" src="javascript/config.js"></script>
-        <script type="text/javascript" src='javascript/lodash.js'></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src='javascript/teamapp.js'></script>
+        <script type="text/javascript" src='javascript/parkapi.js'></script>
+        <script type="text/javascript" src='javascript/gmap.js'></script> 
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDQHNuQGJDBCpnNF01rMuywnHNYkW2hCY&callback=initMap">
+        </script>
         <script type="text/javascript" src='javascript/alt-fuel.js'></script>
         <!-- <script type="text/javascript" src='javascript/teamapp.js'></script> -->
     </body>

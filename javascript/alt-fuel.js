@@ -1,5 +1,5 @@
 
-firebase.initializeApp(altFuelConfig);
+// firebase.initializeApp(altFuelConfig);
 var database = firebase.database();
 
 
@@ -40,7 +40,7 @@ function getStations() {
     				id: id
     			};
 
-    			//console.log(loopObject);
+    			console.log(loopObject);
     			stationArray.push(loopObject);
     			//console.log(stationArray);
     			//database.ref("alt-fuel").push(loopObject);
