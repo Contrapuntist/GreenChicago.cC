@@ -43,7 +43,7 @@ function getParks() {
 
 			stationArray.push(loopObject);
 		};
-
+		database.ref("greenRoofs").remove();
 		database.ref("Park").push(stationArray);
 
 	});
