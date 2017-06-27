@@ -4,21 +4,104 @@
 /*Do not change this because the Map API needs its Div and 
 its container divs to have height defined otherwise it will 
 not display*/
+
+* {
+  box-sizing: border-box;
+}
+
 html, body, .mapwrapper {
     height: 100%;
 }
 
-body, h3 {
-	font-family: 'Catamaran', sans-serif;
-} 
 
-h1, h2 {
-	font-family: 'Philosopher', sans-serif;	
-}  
+h1, h2, body {
+	font-family: 'Roboto Slab', sans-serif;
+}
 
-.hulkimg {
-	width: 100%;
+hr {
+	width: 80%;
+	line-height: 12px;
 }
 
 
+.logo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.logo-text {
+	line-height: 35px;
+	color: #B3DDF2;
+}
+
+.cntr {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.stars {
+	width: 40%;
+	margin: 10px 0px 30px 0px;
+	padding: 0;
+
+}
+.navbar {
+	margin-bottom: 100px;
+	position: relative;
+	min-height: 100%;
+}
+
+.nav-item {
+	margin: 0 auto;
+	text-align: left;
+	font-size: 18px;
+	font-family: 'Oswald', sans-serif;
+	width: 85%;
+	margin-bottom: 15px;
+	border: 1px solid;
+	padding: 7px;
+	color: #3D3D3D;
+	border-color: #FFFFFF;
+	border-radius: 7px;
+	border-style: double;
+	cursor: pointer;
+}
+
+.nav-item:hover > .icon {
+	transition-duration: 0.25s;
+	color:red;
+}
+
+.nav-item:active > .icon {
+	color:green;
+}
+
+.nav-item:active {
+	transition-duration: 0.25s;
+	color:green;
+	background-color: #E2FFD7;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+}
+
+.footer-item {
+	margin: 0 auto;
+	font-size: 16px;
+	font-family: 'Poiret One', sans-serif;
+	width: 80%;
+}
+
+.icon {
+	font-size: 18px;
+}
+
+.icon:hover {
+	color:red;
+}
 
