@@ -5,7 +5,7 @@ var pos={
   lng: -87.6298
 };
 
-firebase.initializeApp(config);
+
 var readDb=firebase.database();
 var curCat='alt-fuel';
 var searchZip='60606';
@@ -22,6 +22,8 @@ function readData(curCat){
 
   });
 }
+
+initMap();
 
 //This is the initialize the map on load
 function initMap() {  
@@ -43,12 +45,14 @@ function initMap() {
 //This is to display the markers based on search category and location
 function placeMultiMarkers(dispData){
   console.log('I am in multi marker');
+  var key=Object.keys(dispData);
+  console.log(key);
   for (i=0; i<dispData.length; i++)
   {
     console.log('in for')
       if(dispData[i].zip===searchZip){
         console.log(dispData[i]);
-        findLatLng(dispData[i]);
+        //findLatLng(dispData[i]);
       }
   }
   
