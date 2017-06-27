@@ -19,22 +19,27 @@
 	</head>
 	<body>
 		<div class="container mapwrapper">
-			
 			<div class="jumbotron">
-
-			  	<h1 class="text-center">ChiGreen App</h1>
-			  	<h3 class="text-center">Let's roll folks</h3>	 
-			  	<P>Cool Easter Egg</P>       
-	    	</div> 
-
+		  	<h1 class="text-center">ChiGreen App</h1>
+		  	<h3 class="text-center">Let's roll folks</h3>	 
+    	</div> 
+			
 			
 			<div class="row mapwrapper">
+
 				<div class="col-lg-8 mapwrapper">
 					<h3>Maps Placeholder</h3>
 					<div id="googlemaptest" class='mapwrapper'></div>
 				</div> 
+
 				<div class="col-lg-4">
-					<img class="hulkimg" src="images/ironman.jpg">
+					<h3>Text &amp; Search </h3>
+					<div class="input-group">
+					  <input id="address" type="text" class="form-control" placeholder="Address">
+					  <span class="input-group-btn">
+					    <button id='searchbtn' class="btn btn-default" type="button">Search</button>
+					  </span>
+					</div><!-- /input-group -->
 				</div>			
 			</div>
 			 
@@ -50,20 +55,22 @@
 			
 		</div> 
 			
-	    <!-- jQuery and JS file calls --> 	
+	  <!-- Firebase, jQuery and JS file calls --> 	
 	  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 		<script type="text/javascript" src="javascript/config.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
+		<!-- team JS files -->
 
-		<script type="text/javascript" src='javascript/teamapp.js'></script>
 		<script type="text/javascript" src='javascript/parkapi.js'></script>
 		<script type="text/javascript" src='javascript/gmap.js'></script> 
 		<script type="text/javascript" src='javascript/greenroofs.js'></script>
 		<script async defer
 	    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 	    </script>
-    
+
+	  <!-- File should always be last since this has all events and initiates app -->
+		<script type="text/javascript" src='javascript/teamapp.js'></script>    
 	</body>
 </html>
 

@@ -1,44 +1,44 @@
 
 
 $(document).ready(function() {
-
 firebase.initializeApp(config); 
-
 var database = firebase.database();
-var greenRoofsArray = []; 
-var dataObj = {};  
 
+function getGreenRoofsData () { 
 
-	$.ajax({
-	    url: "https://data.cityofchicago.org/resource/tnn6-5k2t.json",
-	    type: "GET",
-	    data: {
-	      "$limit" : 5000,
-	      "$$app_token" : grToken,
-	    }
-	}).done(function(data) {
-		alert("Retrieved " + data.length + " records from the dataset!");
-		console.log(data); 
-		console.log(data[0].latitude);
+	var greenRoofsArray = []; 
+	var dataObj = {};  
 
-		for (var i = 0; i < data.length; i++ ) {
-			dataObj = {
-				roofID: data[i].id, 
-				lat: data[i].latitude,
-				long: data[i].longitude,
-				address: data[i].full_address,
-				city: "Chicago",
-				state: "IL", 
-				zip: '',
-			};
+		$.ajax({
+		    url: "https://data.cityofchicago.org/resource/tnn6-5k2t.json",
+		    type: "GET",
+		    data: {
+		      "$limit" : 5000,
+		      "$$app_token" : grToken,
+		    }
+		}).done(function(data) {
+			
+			for (var i = 0; i < data.length; i++ ) {
+				dataObj = {
+					roofID: data[i].id, 
+					lat: data[i].latitude,
+					long: data[i].longitude,
+					address: data[i].full_address,
+					city: "Chicago",
+					state: "IL", 
+					zip: '',
+				};
 
-			greenRoofsArray.push(dataObj);
-		}
-		database.ref("greenRoofs").remove();
-		database.ref("greenRoofs").push(greenRoofsArray); 
+				greenRoofsArray.push(dataObj);
+			}
+			database.ref("greenRoofs").remove();
+			database.ref("greenRoofs").push(greenRoofsArray); 
 
+		});  
 
-	}); 
+	}
+
+getGreenRoofsData ();
 });
 
 
