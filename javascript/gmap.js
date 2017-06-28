@@ -5,7 +5,7 @@ var pos={
   lng: -87.6298
 };
 
-firebase.initializeApp(config);
+
 var readDb=firebase.database();
 var curCat='alt-fuel';
 var searchZip='60606';
@@ -22,6 +22,7 @@ readData(curCat); // hard coded alt-fuel key
 function readData(curCat){
   return readDb.ref(curCat).child(dbChild).once('value').then(function(snapshot){
     var dispData = snapshot.val();
+
     var key=Object.keys(dispData); 
     arrayLength = dispData.length;
     console.log(key);
@@ -29,8 +30,12 @@ function readData(curCat){
     console.log(arrayLength);
     placeMultiMarkers(key);
 
+
   });
 }
+
+
+initMap();
 
 
 // **************************
@@ -60,6 +65,7 @@ testRetrieve();
 // **********************************
 
 
+
 //This is the initialize the map on load
 function initMap() {  
     /*user HTML5 geolocation to get browser location if success calls
@@ -86,7 +92,7 @@ function placeMultiMarkers(dispData){
       console.log('in for')
       if(dispData[i].zip===searchZip){
         console.log(dispData[i]);
-        findLatLng(dispData[i]);
+        //findLatLng(dispData[i]);
       }
   }
   
@@ -101,8 +107,31 @@ function placeMultiMarkers(dispData){
   }
 }
 
+
 //Find Lat and Long using address
-function findLatLng(location){
+function getLatitude(street, city, state){
+
+    var tmpAddress=[];
+    tmpAddress.push(street.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
+    var curAddress=tmpAddress.join(',');
+    console.log(curAddress);
+    var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
+    console.log(getLatLng);
+    $.ajax({
+      url: getLatLng,
+      method: "GET"
+      }).done(function(response){
+        /*pos.lat=response.results[0].geometry.location.lat;
+        pos.lng=response.results[0].geometry.location.lng;
+        var tmp=[];
+        tmp.push(pos.lat, pos.lng);
+        markerArray.push(tmp);*/
+        return response.results[0].geometry.location.lat;
+    });
+}
+
+//Find Lat and Long using address
+function getLongitude(street, city, state){
 
     var tmpAddress=[];
     tmpAddress.push(location.address.split(' ').join('+'), location.city.split(' ').join('+'), location.state.split(' ').join('+'));
@@ -114,11 +143,12 @@ function findLatLng(location){
       url: getLatLng,
       method: "GET"
       }).done(function(response){
-        pos.lat=response.results[0].geometry.location.lat;
+        /*pos.lat=response.results[0].geometry.location.lat;
         pos.lng=response.results[0].geometry.location.lng;
         var tmp=[];
         tmp.push(pos.lat, pos.lng);
-        markerArray.push(tmp);
+        markerArray.push(tmp);*/
+        return response.results[0].geometry.location.lng;
     });
 }
 
