@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 
 var database = firebase.database()
 
-console.log(parkApiKey);
-=======
-require("./gmap");
-console.log(curCat);
->>>>>>> c23fb7ac6df4ea3c060c356f297c8c6d4fbb64ef
 
 var stationArray = [];
 var loopObject = {};
