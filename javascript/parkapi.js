@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 
-var database = firebase.database()
+ // require("./gmap");
 
-console.log(parkApiKey);
-=======
-require("./gmap");
-console.log(curCat);
->>>>>>> c23fb7ac6df4ea3c060c356f297c8c6d4fbb64ef
 
 var stationArray = [];
 var loopObject = {};
@@ -18,11 +12,12 @@ function getParks() {
 	    type: "GET",
 	    data: {
 	      "$$app_token" : parkApiKey
-	    }
+	    },
+	    async: false
 	}).done(function(data) {
 	  	console.log(data[0]);
 
-		for (var i = 0; i < data.length; i++) {
+		for (var i = 0; i < 10; i++) {
 
 			if(data[i].location_zip) {
 				var name = (data[i].park_name);
@@ -45,7 +40,7 @@ function getParks() {
 					id: id
 				};
 			}
-
+			console.log(loopObject);
 			stationArray.push(loopObject);
 		};
 		database.ref("Park").remove();
@@ -54,4 +49,4 @@ function getParks() {
 	});
 }
 
-
+getParks();
