@@ -28,7 +28,8 @@ function readData(curCat){
     console.log(key);
     console.log(dispData);
     console.log(arrayLength);
-    placeMultiMarkers(key);
+    console.log(dispData[0]);
+    placeMultiMarkers(dispData);
 
 
   });
@@ -87,25 +88,25 @@ function initMap() {
 function placeMultiMarkers(dispData){
   console.log('I am in multi marker');
   console.log(dispData);
-  for (i=0; i< arrayLength ; i++) { 
+  //arrayLength
+  for (i=0; i<arrayLength  ; i++) { 
 
-      console.log('in for')
-      if(dispData[i].zip===searchZip){
-        console.log(dispData[i]);
-        //findLatLng(dispData[i]);
-      }
+  if(dispData[i].zip===searchZip)
+    /*marker = new google.maps.Marker({
+      position: new google.maps.LatLng(dispData[i].lat,dispData[i].long),
+      map: map,
+      center: pos,
+      zoom: 6
+    });*/
+    pos.lat=dispData[i].lat;
+    pos.lng=dispData[i].long;
+    placeMarkerAndPanTo(pos, map);
+
+
   }
   
-  console.log(markerArray);
-  // console.log(markerArray[0].length);
-  for(j=0;j<markerArray.length;j++){
-    console.log('i am in multimarker');
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(markerArray[i][0],markerArray[i][1]),
-      map: map
-    });
-  }
 }
+
 
 
 //Find Lat and Long using address
@@ -126,9 +127,13 @@ function getLatitude(street, city, state){
         var tmp=[];
         tmp.push(pos.lat, pos.lng);
         markerArray.push(tmp);*/
+        console.log(response.results[0].geometry.location.lat);
         return response.results[0].geometry.location.lat;
     });
 }
+
+var tmplat = getLatitude('5501 carriageway dr', 'Rolling Meadows', 'IL');
+
 
 //Find Lat and Long using address
 function getLongitude(street, city, state){
@@ -190,7 +195,7 @@ function placeMarkerAndPanTo(latLng, map) {
       map: map
     });
     console.log(latLng);
-    //map.panTo(latLng);
+    map.panTo(latLng);
 
 }
 
