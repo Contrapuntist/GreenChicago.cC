@@ -14,7 +14,7 @@ var markerArray=[];
 // Specifies 1st node in firebase for alt-fuel
 var dbChild = '-KnQWmrvNl34dXBFVzss'; 
 
-readData(curCat); // hard coded alt-fuel key 
+//readData(curCat); // hard coded alt-fuel key 
 
 
 
@@ -92,15 +92,15 @@ function placeMultiMarkers(dispData){
   for (i=0; i<arrayLength  ; i++) { 
 
   if(dispData[i].zip===searchZip)
-    /*marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
       position: new google.maps.LatLng(dispData[i].lat,dispData[i].long),
       map: map,
       center: pos,
       zoom: 6
-    });*/
+    });
     pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
-    placeMarkerAndPanTo(pos, map);
+    //placeMarkerAndPanTo(pos, map);
 
 
   }
