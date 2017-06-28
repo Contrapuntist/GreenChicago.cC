@@ -14,9 +14,7 @@ var markerArray=[];
 // Specifies 1st node in firebase for alt-fuel
 var dbChild = '-KnQWmrvNl34dXBFVzss'; 
 
-readData(curCat); // hard coded alt-fuel key 
-
-
+readData(curCat); 
 
 //To read data from firebase based on category passed
 function readData(curCat){
@@ -25,45 +23,11 @@ function readData(curCat){
 
     var key=Object.keys(dispData); 
     arrayLength = dispData.length;
-    console.log(key);
-    console.log(dispData);
-    console.log(arrayLength);
-    console.log(dispData[0]);
     placeMultiMarkers(dispData);
 
 
   });
 }
-
-
-initMap();
-
-
-// **************************
-// MIGUEL TEST ARRAY FUNCTION  
-
-var arrayLength = null;
-var testArray = [];
-var counter = 0;
-function testRetrieve () { 
-  readDb.ref(curCat).child(dbChild).once('value', function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      var childKey = childSnapshot.key;
-      var childData = childSnapshot.val();
-      // console.log(childKey);
-      // console.log(childData);
-      testArray.push(childData);
-      counter++;
-      // ...
-    });
-  });
-  console.log(testArray);
-  console.log(counter);
-}
-testRetrieve();
-
-// END MIGUEL TEST CODE 
-// **********************************
 
 
 
@@ -87,7 +51,7 @@ function initMap() {
 //This is to display the markers based on search category and location
 function placeMultiMarkers(dispData){
   console.log('I am in multi marker');
-  console.log(dispData);
+  //console.log(dispData);
   //arrayLength
   for (i=0; i<arrayLength  ; i++) { 
 
@@ -164,6 +128,7 @@ function geoLocSucess(position){
           pos.lng = position.coords.longitude;
           displayMap();      
           console.log('I am in success');
+//          readData(curCat); // hard coded alt-fuel key 
 }
 
 //when location is not enabled in browser or enabled but user blocked it
@@ -172,6 +137,7 @@ function geoLocFail(position){
           pos.lng = -87.6298;
           displayMap();    
           console.log('I am in error');
+          //readData(curCat); // hard coded alt-fuel key 
 }
 
 
@@ -194,8 +160,6 @@ function placeMarkerAndPanTo(latLng, map) {
       position: new google.maps.LatLng(latLng.lat,latLng.lng),
       map: map
     });
-    console.log(latLng);
-    map.panTo(latLng);
 
 }
 

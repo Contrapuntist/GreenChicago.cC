@@ -13,10 +13,12 @@ $(document).ready(function() {
       console.log ('app gowri initiated')
     } 
 
+
+
   };
 
 var goodaddress = null; 
-
+initMap();
 
 // app initiate function 
 appObj.init();
