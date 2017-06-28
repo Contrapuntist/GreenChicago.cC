@@ -10,6 +10,8 @@ not display*/
 }
 
 html, body, .mapwrapper {
+    margin: 0;
+    padding: 0;
     height: 100%;
 }
 
