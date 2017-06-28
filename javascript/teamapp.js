@@ -85,7 +85,17 @@ appObj.init();
 
 });
 
+$("#charger-button").on("click", function() {
+        readData("alt-fuel");
+      });
 
+$("#greenroof-button").on("click", function() {
+        readData("greenRoofs");
+      });
+
+$("#park-button").on("click", function() {
+        readData("parks");
+      });
 
 
 
