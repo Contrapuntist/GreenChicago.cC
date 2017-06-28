@@ -7,16 +7,16 @@ var pos={
 
 
 var readDb=firebase.database();
-var curCat='alt-fuel';
+//var curCat='alt-fuel';
 var searchZip='60606';
-var markerArray=[];
+
 
 // Specifies 1st node in firebase for alt-fuel
-var dbChild = '-KnQWmrvNl34dXBFVzss'; 
+//var dbChild = '-KnQWmrvNl34dXBFVzss'; 
 
 
 //To read data from firebase based on category passed
-function readData(curCat){
+/*function readData(curCat){
   return readDb.ref(curCat).child(dbChild).once('value').then(function(snapshot){
     var dispData = snapshot.val();
 
@@ -24,10 +24,24 @@ function readData(curCat){
     arrayLength = dispData.length;
     placeMultiMarkers(dispData);
 
+  });
+}*/
+
+
+//To read data from firebase based on category passed
+function readData(curCat){
+  readDb.ref(curCat).once('value').then(function(snapshot){
+
+    var dispData = snapshot.val();
+    var key=Object.keys(dispData); 
+    var arrayLength = dispData[key].length;
+    console.log(dispData);
+    console.log(arrayLength);
+    console.log(key);
+    placeMultiMarkers(dispData[key]);
 
   });
 }
-
 
 
 //This is the initialize the map on load
@@ -50,20 +64,12 @@ function initMap() {
 //This is to display the markers based on search category and location
 function placeMultiMarkers(dispData){
   console.log('I am in multi marker');
-  //console.log(dispData);
-  //arrayLength
-  for (i=0; i<arrayLength  ; i++) { 
 
-  if(dispData[i].zip===searchZip)
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(dispData[i].lat,dispData[i].long),
-      map: map,
-      center: pos,
-      zoom: 6
-    });
+  for (i=0; i< dispData.length; i++) { 
+
     pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
-    //placeMarkerAndPanTo(pos, map);
+    placeMarkerAndPanTo(pos, map);
 
 
   }
