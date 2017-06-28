@@ -37,7 +37,7 @@ function getGreenRoofsData () {
 
 	}
 
-getGreenRoofsData ();
+//getGreenRoofsData ();
 
 });
 
