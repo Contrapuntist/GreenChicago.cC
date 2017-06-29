@@ -5,7 +5,7 @@ $(document).ready(function() {
   var appObj = {
 
     // global variables 
-    database: firebase.database(),
+    //database: firebase.database(),
     address: null,
 
     // functions 
@@ -13,10 +13,14 @@ $(document).ready(function() {
       console.log ('app gowri initiated')
     } 
 
+
+
   };
 
 var goodaddress = null; 
 
+//call the function to load map on page load
+initMap();
 
 // app initiate function 
 appObj.init();
@@ -86,6 +90,18 @@ appObj.init();
 });
 
 
+
+$("#charger-button").on("click", function() {
+        readData("alt-fuel");
+      });
+
+$("#greenroof-button").on("click", function() {
+        readData("greenRoofs");
+      });
+
+$("#park-button").on("click", function() {
+        readData("parks");
+      });
 
 
 

@@ -1,6 +1,9 @@
 # config
 config.js 
 
+# .ds_store
+.DS_Store
+
 # Logs
 logs
 *.log
