@@ -1,4 +1,4 @@
-var map, infoWindow, markerArray = [];
+var map, infoWindow, markerArray = [], markerCluster;
 
 var pos={
   lat: 41.8781,
@@ -31,6 +31,7 @@ var searchZip='60606';
 //To read data from firebase based on category passed
 function readData(curCat){
   removeMarkers();
+  
   readDb.ref(curCat).once('value').then(function(snapshot){
 
     var dispData = snapshot.val();
@@ -40,6 +41,7 @@ function readData(curCat){
     console.log(arrayLength);
     console.log(key);
     placeMultiMarkers(dispData[key]);
+
 
   });
 }
@@ -74,6 +76,7 @@ function placeMultiMarkers(dispData){
 
 
   }
+  placeMarkerCluster();
   
 }
 
@@ -151,15 +154,12 @@ function geoLocFail(position){
 function displayMap(){
     map = new google.maps.Map(document.getElementById('googlemaptest'), {
             center: pos,
-            zoom: 6,
+            zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
       });
       placeMarkerAndPanTo(pos, map);
-
+      
 }
-
-
-
 
 
 /*This function will put the place markers in the map for given 
@@ -182,12 +182,23 @@ function placeMarkerAndPanTo(latLng, map) {
 
 }
 
+//place marker cluster
+function placeMarkerCluster(){
+   markerCluster = new MarkerClusterer(map, markerArray,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      
+}
+
 /*Remove markers from the map*/
 function removeMarkers(){
-  for(i=0; i<markerArray.length; i++){
+  /*for(i=0; i<markerArray.length; i++){
     markerArray[i].setMap(null);
-  }
+  }*/
   markerArray=[];
+ if(markerCluster){
+  markerCluster.clearMarkers();
+  }
+  
 }
 
 /*This call will only work with some synchronous call & wait because
