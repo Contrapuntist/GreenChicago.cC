@@ -5,6 +5,8 @@ var pos={
   lng: -87.6298
 };
 
+var contentString = '<h2>TEST</h2>' + 
+'<p>all sorts of good stuff goes here</p>';
 
 var readDb=firebase.database();
 //var curCat='alt-fuel';
@@ -54,6 +56,7 @@ function initMap() {
     that will display with chicago as marker*/
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(geoLocSucess, geoLocFail);
+    
     }
     //this is for old browsers if it does not support geolocation
     else{
@@ -62,6 +65,7 @@ function initMap() {
           displayMap();
           console.log('I am in old browser');
     }
+
 }
 
 //This is to display the markers based on search category and location
@@ -157,6 +161,7 @@ function displayMap(){
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
       });
+      
       placeMarkerAndPanTo(pos, map);
       
 }
@@ -165,8 +170,16 @@ function displayMap(){
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
 
+var mapInfoWindow = "<div><h2>Show the gods<h2></div>"
+
 function placeMarkerAndPanTo(latLng, map) {
     var marker;
+    
+    var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(latLng.lat,latLng.lng),
       map: map,
@@ -177,8 +190,11 @@ function placeMarkerAndPanTo(latLng, map) {
     });
     markerArray.push(marker);
     google.maps.event.addListener(marker, 'click', function(){
-  console.log('marker clicked');
-});
+    
+      console.log('marker clicked'); 
+      infowindow.open(map, marker);
+    
+    });
 
 }
 
@@ -199,6 +215,7 @@ function removeMarkers(){
   markerCluster.clearMarkers();
   }
   
+
 }
 
 /*This call will only work with some synchronous call & wait because
@@ -219,5 +236,10 @@ function getCurLocation(){
     }
     
 }
+
+ 
+
+
+
 
 
