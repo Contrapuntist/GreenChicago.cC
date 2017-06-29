@@ -127,13 +127,10 @@ function getLatitude(street, city, state){
         var tmp=[];
         tmp.push(pos.lat, pos.lng);
         markerArray.push(tmp);*/
-<<<<<<< HEAD
-        var lat = response.results[0].geometry.location.lat;
-        return lat;
-=======
+
         console.log(response.results[0].geometry.location.lat);
         return response.results[0].geometry.location.lat;
->>>>>>> 973a8bfc29497a58c32979d938fc95c7fad69e96
+
     });
 }
 
