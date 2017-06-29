@@ -2,11 +2,12 @@ var map, infoWindow, markerArray = [], markerCluster;
 
 var pos={
   lat: 41.8781,
-  lng: -87.6298
+  lng: -87.6298,
+  address: "230 N Michigan Ave",
+  zip: "60601",
+  name: "Someplace Downtown",
+  iwTitle: 'Data Category'
 };
-
-var contentString = '<h2>TEST</h2>' + 
-'<p>all sorts of good stuff goes here</p>';
 
 var readDb=firebase.database();
 //var curCat='alt-fuel';
@@ -44,7 +45,6 @@ function readData(curCat){
     console.log(key);
     placeMultiMarkers(dispData[key]);
 
-
   });
 }
 
@@ -77,7 +77,6 @@ function placeMultiMarkers(dispData){
     pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
     placeMarkerAndPanTo(pos, map);
-
 
   }
   placeMarkerCluster();
@@ -170,7 +169,29 @@ function displayMap(){
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
 
-var mapInfoWindow = "<div><h2>Show the gods<h2></div>"
+
+
+
+
+// *********************************** 
+// Google Map Infobox customization 
+// ***********************************
+
+var contentString = '<div id="iw-container">' + 
+                    '<div class="iw-title">' + pos.iwTitle + '</div>' +
+                    '<div class="iw-content">' +
+                      '<div class="iw-subTitle"> Subtitle here </div>' +
+                      '<p> text example </p>' +
+                      '<div class="iw-subTitle">Address</div>' +
+                      '<p>' + pos.address +'<br>'+
+                    '</div>' +
+                    '<div class="iw-bottom-gradient"></div>' +
+                  '</div>'; 
+
+
+
+
+
 
 function placeMarkerAndPanTo(latLng, map) {
     var marker;
@@ -186,14 +207,21 @@ function placeMarkerAndPanTo(latLng, map) {
       icon: {
         url: './images/Ptx.jpg',
         size: new google.maps.Size(30, 30)
-    }
+      }
     });
+    
     markerArray.push(marker);
-    google.maps.event.addListener(marker, 'click', function(){
+    
+    google.maps.event.addListener(marker, 'click', function(e){
     
       console.log('marker clicked'); 
+
+      google.maps.event.addListener(map, 'click', function() {
+        infowindow.close();
+      });
+
       infowindow.open(map, marker);
-    
+        
     });
 
 }
@@ -238,6 +266,9 @@ function getCurLocation(){
 }
 
  
+
+
+
 
 
 
