@@ -1,4 +1,4 @@
-var map, infoWindow;
+var map, infoWindow, markerArray = [];
 
 var pos={
   lat: 41.8781,
@@ -30,6 +30,7 @@ var searchZip='60606';
 
 //To read data from firebase based on category passed
 function readData(curCat){
+  removeMarkers();
   readDb.ref(curCat).once('value').then(function(snapshot){
 
     var dispData = snapshot.val();
@@ -157,15 +158,36 @@ function displayMap(){
 
 }
 
+
+
+
+
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
-var marker;
+
 function placeMarkerAndPanTo(latLng, map) {
+    var marker;
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(latLng.lat,latLng.lng),
-      map: map
+      map: map,
+      icon: {
+        url: './images/Ptx.jpg',
+        size: new google.maps.Size(30, 30)
+    }
     });
+    markerArray.push(marker);
+    google.maps.event.addListener(marker, 'click', function(){
+  console.log('marker clicked');
+});
 
+}
+
+/*Remove markers from the map*/
+function removeMarkers(){
+  for(i=0; i<markerArray.length; i++){
+    markerArray[i].setMap(null);
+  }
+  markerArray=[];
 }
 
 /*This call will only work with some synchronous call & wait because
