@@ -80,10 +80,8 @@ function placeMultiMarkers(){
     /*pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
     placeMarkerAndPanTo(pos, map);*/
-
-    
-
     //pos.address=dispData[i].address;
+
     placeMarkerAndPanTo(dispData[i],map, i);
 
 
