@@ -15,6 +15,15 @@ html, body, .mapwrapper {
     height: 100%;
 }
 
+.mapwrapper{
+	clear: both;
+}
+
+.navwrapper {
+	margin: 0 auto;
+	height: 65px;
+	width: 390px;
+}
 
 h1, h2, body {
 	font-family: 'Roboto Slab', sans-serif;
@@ -42,31 +51,34 @@ hr {
 }
 
 .stars {
-	width: 40%;
-	margin: 10px 0px 30px 0px;
+	margin: 10px 0px 0px 0px;
 	padding: 0;
-
+	clear: both;
+	width: 100px;
 }
 .navbar {
-	margin-bottom: 100px;
-	position: relative;
-	min-height: 100%;
+	min-height: 200px;
+	height: 200px;
 }
 
 .nav-item {
 	margin: 0 auto;
-	text-align: left;
-	font-size: 18px;
+	text-align: center;
+	font-size: 16px;
 	font-family: 'Oswald', sans-serif;
-	width: 85%;
-	margin-bottom: 15px;
+	width: 50px;
+	height: 50px;
+	margin-bottom: 10px;
 	border: 1px solid;
-	padding: 7px;
+	padding: 5px;
 	color: #3D3D3D;
-	border-color: #FFFFFF;
+	border-color: #ffffff;
 	border-radius: 7px;
 	border-style: double;
 	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	margin-right: 15px;
 }
 
 .nav-item:hover > .icon {
@@ -84,12 +96,17 @@ hr {
 	background-color: #E2FFD7;
 }
 
+.nav-text {
+	visibility: hidden;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 80%;
   /* Set the fixed height of the footer here */
   height: 100px;
+  visibility: hidden;
 }
 
 .footer-item {
@@ -107,3 +124,59 @@ hr {
 	color:red;
 }
 
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media(max-width:767px){
+
+}
+
+@media(min-width:768px){
+
+
+
+}
+@media(min-width:992px){
+
+
+}
+
+@media(min-width:1200px){
+
+	.nav-item{
+		font-size: 16px;
+		width: 100%;
+		text-align: left;
+		float: none;
+	}
+
+	.navbar {
+		margin-bottom: 100px;
+		position: relative;
+		min-height: 100%;
+	}
+
+	.nav-text {
+		visibility: visible;
+	}
+
+	.footer {
+		visibility: visible;
+	}
+
+	.mapwrapper {
+		clear:none;
+	}
+
+	.navwrapper {
+		width: 100%;
+		position: relative;
+	}
+
+	.stars {
+		margin-bottom: 30px;
+	}
+}
