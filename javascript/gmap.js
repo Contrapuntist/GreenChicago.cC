@@ -2,9 +2,12 @@ var map, infoWindow, markerArray = [], markerCluster;
 
 var pos={
   lat: 41.8781,
-  lng: -87.6298
+  lng: -87.6298,
+  address: "230 N Michigan Ave",
+  zip: "60601",
+  name: "Someplace Downtown",
+  iwTitle: 'Data Category'
 };
-
 
 var readDb=firebase.database();
 //var curCat='alt-fuel';
@@ -42,7 +45,6 @@ function readData(curCat){
     console.log(key);
     placeMultiMarkers(dispData[key]);
 
-
   });
 }
 
@@ -54,6 +56,7 @@ function initMap() {
     that will display with chicago as marker*/
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(geoLocSucess, geoLocFail);
+    
     }
     //this is for old browsers if it does not support geolocation
     else{
@@ -62,6 +65,7 @@ function initMap() {
           displayMap();
           console.log('I am in old browser');
     }
+
 }
 
 //This is to display the markers based on search category and location
@@ -72,8 +76,8 @@ function placeMultiMarkers(dispData){
 
     pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
+    pos.address=dispData[i].address;
     placeMarkerAndPanTo(pos, map);
-
 
   }
   placeMarkerCluster();
@@ -160,6 +164,7 @@ function displayMap(){
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
       });
+      
       placeMarkerAndPanTo(pos, map);
       
 }
@@ -168,20 +173,58 @@ function displayMap(){
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
 
+
+
+
+
+// *********************************** 
+// Google Map Infobox customization 
+// ***********************************
+
+var contentString = '<div id="iw-container">' + 
+                    '<div class="iw-title">' + pos.iwTitle + '</div>' +
+                    '<div class="iw-content">' +
+                      '<div class="iw-subTitle"> Subtitle here </div>' +
+                      '<p> text example </p>' +
+                      '<div class="iw-subTitle">Address</div>' +
+                      '<p>' + pos.address +'<br>'+
+                    '</div>' +
+                    '<div class="iw-bottom-gradient"></div>' +
+                  '</div>'; 
+
+
 function placeMarkerAndPanTo(latLng, map) {
     var marker;
+    
+    var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(latLng.lat,latLng.lng),
       map: map,
       icon: {
         url: './images/Ptx.jpg',
         size: new google.maps.Size(30, 30)
-    }
+      }
     });
+    
     markerArray.push(marker);
-    google.maps.event.addListener(marker, 'click', function(){
-  console.log('marker clicked');
-});
+    
+    google.maps.event.addListener(marker, 'click', function(e){
+    
+      console.log('marker clicked'); 
+      $('#mod-title').text(pos.address);
+      $('#mod-details').html(contentString); 
+      $('#myModal').modal('show');
+
+      google.maps.event.addListener(map, 'click', function() {
+        infowindow.close();
+      });
+
+      infowindow.open(map, marker);
+        
+    });
 
 }
 
@@ -202,6 +245,7 @@ function removeMarkers(){
   markerCluster.clearMarkers();
   }
   
+
 }
 
 /*This call will only work with some synchronous call & wait because
@@ -222,5 +266,13 @@ function getCurLocation(){
     }
     
 }
+
+ 
+
+
+
+
+
+
 
 
