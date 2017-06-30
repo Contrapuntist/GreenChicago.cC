@@ -1,51 +1,66 @@
 
 var database = firebase.database();
 
-var chicagoZipcodes = [60007, 60176, 60603, 60607, 60611, 60615, 60619, 60623, 60628, 60632, 
-    60637, 60641, 60645, 60651, 60655, 60660, 60668, 60674, 60680, 60686, 60690, 60695,60701, 
-    60804, 60018, 60290, 60604, 60608, 60612, 60616, 60620, 60624, 60629, 60633, 60638, 60642, 
-    60646, 60652, 60656, 60661, 60669, 60675, 60681, 60687, 60691, 60696, 60706, 60827, 60106, 
-    60601, 60605, 60609, 60613, 60617, 60621, 60625, 60630, 60634, 60639, 60643, 60647, 60653, 
-    60657, 60664, 60670, 60677, 60684, 60688, 60693, 60697, 60707, 60131, 60602, 60606, 60610, 
-    60614, 60618, 60622, 60626, 60631, 60636, 60640, 60644, 60649, 60654, 60659, 60666, 60673, 
-    60678, 60685, 60689, 60694, 60699, 60803];
+var marketArray = [];
+var marketObject = {};
 
-function getResults(zip) {
-    // or
-    // function getResults(lat, lng) {
+function getMarkets(){ 
     $.ajax({
+        url: "https://data.cityofchicago.org/resource/3r5z-s68i.json",
         type: "GET",
-        contentType: "application/json; charset=utf-8",
-        // submit a get request to the restful service zipSearch or locSearch.
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
-        // or
-        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
-        dataType: 'jsonp'
-    }).done(function(data){
-        console.log(data)
-        for (var key in data) {
-            var results = data[key];
-            for (var i = 0; i < results.length; i++) {
-                var result = results[i];
-                for (var key in result) {
-                    //only do an alert on the first search result
-                    if (i == 0) {
-                        console.log(result[key]);
-                    }
-                }
+        data: {
+          "$limit" : 5000,
+          "$$app_token" : parkApiKey
+        }
+    }).done(function(data) {
+
+        for (var i = 0; i < data.length; i++) {
+
+            if(data[i].start_date) {
+                var name = data[i].location;
+                var latitude = data[i].latitude;
+                var longitude = data[i].longitude;
+                var city = "CHICAGO";
+                var zip = null;
+                var address = data[i].intersection;
+                var state = "IL";
+                var day = data[i].day;
+                var startTime = data[i].start_time;
+                var endTime = data[i].end_time;
+                var startDate = data[i].start_date.slice(5, 10);
+                var endDate = data[i].end_date.slice(5, 10);
+                var type = data[i].type;
+
+                marketObject = {
+                    lat: latitude,
+                    long: longitude,
+                    zip: zip,
+                    address: address,
+                    city: city,
+                    state: state,
+                    name: name,
+                    day: day,
+                    startTime: startTime,
+                    endTime: endTime,
+                    startDate: startDate,
+                    endDate: endDate,
+                    type: type,
+                };
+            
+                marketArray.push(marketObject);
             }
         }
-
+        database.ref("markets").remove();
+        database.ref("markets").push(marketArray);
     });
 }
 
-function getResultsByZip(zips) {
-    for (var i = 0; i < zips.length; i++) {
-        getResults(zips[i]);
-    }
-}
+getMarkets();
 
-getResultsByZip(chicagoZipcodes);
+
+
+
+
 
 
 
