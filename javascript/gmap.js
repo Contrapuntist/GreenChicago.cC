@@ -76,6 +76,7 @@ function placeMultiMarkers(dispData){
 
     pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
+    pos.address=dispData[i].address;
     placeMarkerAndPanTo(pos, map);
 
   }
@@ -192,17 +193,12 @@ var contentString = '<div id="iw-container">' +
                   '</div>'; 
 
 
-
-
-
-
 function placeMarkerAndPanTo(latLng, map) {
     var marker;
     
     var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
-
 
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(latLng.lat,latLng.lng),
@@ -218,6 +214,9 @@ function placeMarkerAndPanTo(latLng, map) {
     google.maps.event.addListener(marker, 'click', function(e){
     
       console.log('marker clicked'); 
+      $('#mod-title').text(pos.address);
+      $('#mod-details').html(contentString); 
+      $('#myModal').modal('show');
 
       google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
