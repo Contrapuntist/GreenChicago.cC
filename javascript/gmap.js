@@ -1,13 +1,11 @@
-var map, infoWindow, markerArray = [], markerCluster;
+var map, infoWindow, markerArray = [], markerCluster, curCategory, dispData;
 
 var pos={
   lat: 41.8781,
-  lng: -87.6298,
-  address: "230 N Michigan Ave",
-  zip: "60601",
-  name: "Someplace Downtown",
-  iwTitle: 'Data Category'
+  lng: -87.6298  
 };
+
+
 
 var readDb=firebase.database();
 //var curCat='alt-fuel';
@@ -33,17 +31,22 @@ var searchZip='60606';
 
 //To read data from firebase based on category passed
 function readData(curCat){
+  curCategory=curCat;
+  dispData={};
+  console.log(curCategory);
   removeMarkers();
   
   readDb.ref(curCat).once('value').then(function(snapshot){
 
-    var dispData = snapshot.val();
-    var key=Object.keys(dispData); 
-    var arrayLength = dispData[key].length;
+    var curCatData = snapshot.val();
+    
+    var key=Object.keys(curCatData); 
+    dispData = curCatData[key];
+    //var arrayLength = dispData[key].length;
     console.log(dispData);
-    console.log(arrayLength);
+    //console.log(arrayLength);
     console.log(key);
-    placeMultiMarkers(dispData[key]);
+    placeMultiMarkers();
 
   });
 }
@@ -69,7 +72,7 @@ function initMap() {
 }
 
 //This is to display the markers based on search category and location
-function placeMultiMarkers(dispData){
+function placeMultiMarkers(){
   console.log('I am in multi marker');
 
   for (i=0; i< dispData.length; i++) { 
@@ -80,8 +83,8 @@ function placeMultiMarkers(dispData){
 
     
 
-    pos.address=dispData[i].address;
-    placeMarkerAndPanTo(dispData[i],map);
+    //pos.address=dispData[i].address;
+    placeMarkerAndPanTo(dispData[i],map, i);
 
 
   }
@@ -169,9 +172,15 @@ function displayMap(){
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
       });
-      
-      placeMarkerAndPanTo(pos, map);
-      
+
+    var initMarker = new google.maps.Marker({
+      position: new google.maps.LatLng(pos.lat,pos.lng),
+      map: map,
+      icon: {
+        url: './images/Ptx.png',
+        size: new google.maps.Size(50, 50)
+    }
+    });   
 }
 
 
@@ -179,28 +188,24 @@ function displayMap(){
 latitude and longitude*/
 
 var i=0;
-function placeMarkerAndPanTo(location, map) {
-    var marker;
-
-
 
 // *********************************** 
 // Google Map Infobox customization 
 // ***********************************
 
 var contentString = '<div id="iw-container">' + 
-                    '<div class="iw-title">' + pos.iwTitle + '</div>' +
+                    '<div class="iw-title">' + curCategory + '</div>' +
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle"> Subtitle here </div>' +
                       '<p> text example </p>' +
                       '<div class="iw-subTitle">Address</div>' +
-                      '<p>' + pos.address +'<br>'+
+                      '<p>' + 'test' +'<br>'+
                     '</div>' +
                     '<div class="iw-bottom-gradient"></div>' +
                   '</div>'; 
 
 
-function placeMarkerAndPanTo(latLng, map) {
+function placeMarkerAndPanTo(data, map, i) {
     var marker;
     
     var infowindow = new google.maps.InfoWindow({
@@ -209,9 +214,9 @@ function placeMarkerAndPanTo(latLng, map) {
 
 
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(location.lat,location.long),
+      position: new google.maps.LatLng(data.lat,data.long),
       map: map,
-      id: i++,
+      id: i,
       icon: {
         url: './images/Test.svg',
         size: new google.maps.Size(50, 50)
@@ -223,7 +228,8 @@ function placeMarkerAndPanTo(latLng, map) {
     google.maps.event.addListener(marker, 'click', function(e){
     
       console.log('marker clicked'+marker.id); 
-      $('#mod-title').text(pos.address);
+      $('#mod-title').text(dispData[marker.id].address);
+      console.log(dispData[marker.id].address);
       $('#mod-details').html(contentString); 
       $('#myModal').modal('show');
 
