@@ -1,6 +1,6 @@
 
-var database = firebase.database()
-
+ // require("./gmap");
+var database = firebase.database();
 
 var stationArray = [];
 var loopObject = {};
@@ -14,14 +14,13 @@ function getParks() {
 	      "$$app_token" : parkApiKey
 	    }
 	}).done(function(data) {
-	  	console.log(data[0]);
 
 		for (var i = 0; i < data.length; i++) {
-
+			
 			if(data[i].location_zip) {
 				var name = (data[i].park_name);
-				var latitude = getLatitude(data[i].location_address, "CHICAGO", "IL");
-				var longitude = getLongitude(data[i].location_address, "CHICAGO", "IL");
+				var latitude = null;
+				var longitude = null;
 				var city = "CHICAGO";
 				var zip = (data[i].location_zip);
 				var address = (data[i].location_address);
@@ -39,13 +38,14 @@ function getParks() {
 					id: id
 				};
 			}
-
+		
 			stationArray.push(loopObject);
-		};
+		}
 		database.ref("Park").remove();
 		database.ref("Park").push(stationArray);
-
+	  	
 	});
 }
 
 
+getParks();

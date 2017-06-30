@@ -49,6 +49,6 @@ function getStations() {
 			});
 };
 
-getStations();
+//getStations();
 
 
