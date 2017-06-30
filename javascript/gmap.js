@@ -91,9 +91,9 @@ function getLatitude(street, city, state){
     var tmpAddress=[];
     tmpAddress.push(street.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
     var curAddress=tmpAddress.join(',');
-    console.log(curAddress);
+    // console.log(curAddress);
     var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
-    console.log(getLatLng);
+    // console.log(getLatLng);
     $.ajax({
       url: getLatLng,
       method: "GET"
@@ -103,8 +103,10 @@ function getLatitude(street, city, state){
         var tmp=[];
         tmp.push(pos.lat, pos.lng);
         markerArray.push(tmp);*/
+
         console.log(response.results[0].geometry.location.lat);
         return response.results[0].geometry.location.lat;
+
     });
 }
 
@@ -115,11 +117,11 @@ var tmplat = getLatitude('5501 carriageway dr', 'Rolling Meadows', 'IL');
 function getLongitude(street, city, state){
 
     var tmpAddress=[];
-    tmpAddress.push(location.address.split(' ').join('+'), location.city.split(' ').join('+'), location.state.split(' ').join('+'));
+    tmpAddress.push(street.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
     var curAddress=tmpAddress.join(',');
-    console.log(curAddress);
+    // console.log(curAddress);
     var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
-    console.log(getLatLng);
+    // console.log(getLatLng);
     $.ajax({
       url: getLatLng,
       method: "GET"
@@ -129,7 +131,8 @@ function getLongitude(street, city, state){
         var tmp=[];
         tmp.push(pos.lat, pos.lng);
         markerArray.push(tmp);*/
-        return response.results[0].geometry.location.lng;
+        var long = response.results[0].geometry.location.lng;
+        return long;
     });
 }
 
