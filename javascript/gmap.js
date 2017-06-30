@@ -70,9 +70,11 @@ function placeMultiMarkers(dispData){
 
   for (i=0; i< dispData.length; i++) { 
 
-    pos.lat=dispData[i].lat;
+    /*pos.lat=dispData[i].lat;
     pos.lng=dispData[i].long;
-    placeMarkerAndPanTo(pos, map);
+    placeMarkerAndPanTo(pos, map);*/
+
+    placeMarkerAndPanTo(dispData[i],map);
 
 
   }
@@ -165,19 +167,24 @@ function displayMap(){
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
 
-function placeMarkerAndPanTo(latLng, map) {
+var i=0;
+function placeMarkerAndPanTo(location, map) {
     var marker;
+
+    var infowindow = new google.maps.InfoWindow();
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(latLng.lat,latLng.lng),
+      position: new google.maps.LatLng(location.lat,location.long),
       map: map,
+      id: i++,
       icon: {
-        url: './images/Ptx.jpg',
-        size: new google.maps.Size(30, 30)
+        url: './images/Test.svg',
+        size: new google.maps.Size(50, 50)
     }
     });
+    infowindow.setContent(location.street);
     markerArray.push(marker);
     google.maps.event.addListener(marker, 'click', function(){
-  console.log('marker clicked');
+  console.log('marker clicked'+marker.id);
 });
 
 }
