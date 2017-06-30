@@ -79,6 +79,7 @@ function placeMultiMarkers(dispData){
     pos.address=dispData[i].address;
     placeMarkerAndPanTo(pos, map);
 
+    console.log(pos.address);
   }
   placeMarkerCluster();
   
@@ -212,11 +213,12 @@ function placeMarkerAndPanTo(latLng, map) {
     markerArray.push(marker);
     
     google.maps.event.addListener(marker, 'click', function(e){
-    
-      console.log('marker clicked'); 
-      $('#mod-title').text(pos.address);
-      $('#mod-details').html(contentString); 
-      $('#myModal').modal('show');
+
+      // ****** Modals for markers *******    
+      // console.log('marker clicked'); 
+      // $('#mod-title').text(pos.address);
+      // $('#mod-details').html(contentString); 
+      // $('#myModal').modal('show');
 
       google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
@@ -267,7 +269,7 @@ function getCurLocation(){
     
 }
 
- 
+
 
 
 

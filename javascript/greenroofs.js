@@ -39,6 +39,12 @@ function getGreenRoofsData () {
 
 //getGreenRoofsData ();
 
+
+database.ref().on("child_added", function(snap) {
+  var name = snap.name();
+  console.log ('key name is' + name);
+});
+
 });
 
 
