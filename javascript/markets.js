@@ -55,7 +55,7 @@ function getMarkets(){
     });
 }
 
-getMarkets();
+//getMarkets();
 
 
 
