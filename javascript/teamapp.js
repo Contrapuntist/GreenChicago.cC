@@ -99,11 +99,15 @@ $("#greenroof-button").on("click", function() {
         readData("greenRoofs");
       });
 
-$("#park-button").on("click", function() {
+$("#parks-button").on("click", function() {
         readData("parks");
       });
 
-$("#farmersmarket-button").on("click", function() {
+$("#bikeshare-button").on("click", function() {
+        readData("divvy");
+      });
+
+$("#farmersmarkets-button").on("click", function() {
         readData("markets");
       });
 
