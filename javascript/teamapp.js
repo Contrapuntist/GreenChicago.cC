@@ -103,6 +103,10 @@ $("#park-button").on("click", function() {
         readData("parks");
       });
 
+$("#farmersmarket-button").on("click", function() {
+        readData("markets");
+      });
+
 
 
 

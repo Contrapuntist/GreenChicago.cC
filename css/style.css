@@ -22,7 +22,7 @@ html, body, .mapwrapper {
 .navwrapper {
 	margin: 0 auto;
 	height: 65px;
-	width: 390px;
+	width: 420px;
 }
 
 h1, h2, body {
@@ -56,13 +56,12 @@ hr {
 	clear: both;
 	width: 100px;
 }
-.navbar {
+.nav-container {
 	min-height: 200px;
 	height: 200px;
 }
 
 .nav-item {
-	margin: 0 auto;
 	text-align: center;
 	font-size: 16px;
 	font-family: 'Oswald', sans-serif;
@@ -78,7 +77,7 @@ hr {
 	cursor: pointer;
 	float: left;
 	overflow: hidden;
-	margin-right: 15px;
+	margin: 0px 10px 10px 10px;
 }
 
 .nav-item:hover > .icon {
@@ -100,13 +99,17 @@ hr {
 	visibility: hidden;
 }
 
+.sub-menu {
+	background-color: #ffffff;
+	border: none;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 80%;
   /* Set the fixed height of the footer here */
   height: 100px;
-  visibility: hidden;
 }
 
 .footer-item {
@@ -192,11 +195,9 @@ hr {
 
 @media(min-width:768px){
 
-
-
 }
-@media(min-width:992px){
 
+@media(min-width:992px){
 
 }
 
@@ -237,3 +238,54 @@ hr {
 	}
 }
 
+@media (max-width: 1199px) {
+  .navbar-header {
+      float: none;
+
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      text-align: left;
+
+  }
+  .navbar-fixed-top {
+      top: 0;
+      /*border-width: 0 0 1px;*/
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+
+  }
+
+  .sub-menu{
+  	width:100px;
+  }
+
+  .footer{
+  	width:100px;
+  	position: absolute;
+    top: 0;
+    right: 15px;
+  }
+}
