@@ -217,8 +217,8 @@ function placeMarkerAndPanTo(data, map, i) {
       map: map,
       id: i,
       icon: {
-        url: './images/Test.svg',
-        size: new google.maps.Size(50, 50)
+        url: './images/Test.svg'
+        //size: new google.maps.Size(50, 50)
     }
     });
     
@@ -244,8 +244,11 @@ function placeMarkerAndPanTo(data, map, i) {
 
 //place marker cluster
 function placeMarkerCluster(){
-   markerCluster = new MarkerClusterer(map, markerArray,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+   markerCluster = new MarkerClusterer(map, markerArray, 
+            {
+              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+              minimumClusterSize: 5
+            });
       
 }
 
