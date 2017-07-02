@@ -19,10 +19,10 @@ function getParks() {
 			
 			if(data[i].location_zip) {
 				var name = (data[i].park_name);
-				var latitude = null;
-				var longitude = null;
+				var latitude = " ";
+				var longitude = " ";
 				var city = "CHICAGO";
-				var zip = (data[i].location_zip);
+				var zip = (data[i].loxcation_zip);
 				var address = (data[i].location_address);
 				var state = "IL";
 				var id = (data[i].park_number);
@@ -41,8 +41,8 @@ function getParks() {
 		
 			stationArray.push(loopObject);
 		}
-		database.ref("Park").remove();
-		database.ref("Park").push(stationArray);
+		database.ref("parks").remove();
+		database.ref("parks").push(stationArray);
 	  	
 	});
 }
