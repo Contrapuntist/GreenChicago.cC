@@ -84,8 +84,6 @@ function placeMultiMarkers(){
 
     placeMarkerAndPanTo(dispData[i],map, i);
 
-
-    console.log(pos.address);
   }
   placeMarkerCluster();
   
@@ -192,21 +190,49 @@ var i=0;
 // Google Map Infobox customization 
 // ***********************************
 
-var contentString = '<div id="iw-container">' + 
-                    '<div class="iw-title">' + curCategory + '</div>' +
-                    '<div class="iw-content">' +
-                      '<div class="iw-subTitle"> Subtitle here </div>' +
-                      '<p> text example </p>' +
-                      '<div class="iw-subTitle">Address</div>' +
-                      '<p>' + 'test' +'<br>'+
-                    '</div>' +
-                    '<div class="iw-bottom-gradient"></div>' +
-                  '</div>'; 
+
 
 
 function placeMarkerAndPanTo(data, map, i) {
     var marker;
-    
+    var newDiv = $("<div>"); 
+    var contentString;
+
+    if (curCategory == "alt-fuel") { 
+      contentString = '<div id="iw-container">' + 
+                '<div class="iw-title">' + 
+                '<span class="fa-stack fa-lg icon"><i class="fa fa-circle-thin fa-stack-2x"></i> ' + 
+                '<i class="fa fa-bolt fa-stack-1x"></i></span>' + 
+                ' EV Station</div>' +
+                '<div class="iw-content">' +
+                  '<div class="iw-subTitle"> Address</div>' +
+                  '<p>' + dispData[i].address + '</p>' +
+                  '<div class="iw-subTitle"> </div>' +
+                  '<p>' + 'test' +'<br>'+
+                '</div>' +
+                // '<div class="iw-bottom-gradient"></div>' +
+              '</div>'; 
+    } else if (curCategory == "greenRoofs") {
+
+          contentString = '<div id="iw-container">' + 
+                    '<div class="iw-title">Green Roof</div>' +
+                    '<div class="iw-content">' +
+                      '<div class="iw-subTitle"> Address' + dispData[i].address + '</div>' +
+                      '<p> text example </p>' +
+                      '<div class="iw-subTitle">other info</div>' +
+                      '<p>' + 'test' +'<br>'+
+                    '</div>' +
+                    // '<div class="iw-bottom-gradient"></div>' +
+                  '</div>';
+
+    } else { 
+
+      console.log ('category parks, divvy, markets or unknown');
+    }
+
+    // other categories divvy, markets, parks  
+
+
     var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -225,12 +251,15 @@ function placeMarkerAndPanTo(data, map, i) {
     markerArray.push(marker);
       
     google.maps.event.addListener(marker, 'click', function(e){
-          
-      console.log('marker clicked'+marker.id); 
-      $('#mod-title').text(dispData[marker.id].address);
-      console.log(dispData[marker.id].address);
-      $('#mod-details').html(contentString); 
-      $('#myModal').modal('show');
+             
+
+    // MODAL OPTION  
+      // console.log('marker clicked'+marker.id); 
+      // $('#mod-title').text(dispData[marker.id].address);
+      // console.log(dispData[marker.id].address);
+      // $('#mod-details').html(contentString); 
+      // $('#myModal').modal('show');
+
 
       google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
