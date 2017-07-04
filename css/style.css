@@ -13,6 +13,7 @@ html, body, .mapwrapper {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: 'Oswald', sans-serif;
 }
 
 .mapwrapper{
@@ -22,18 +23,12 @@ html, body, .mapwrapper {
 .navwrapper {
 	margin: 0 auto;
 	height: 65px;
-	width: 420px;
+	width: 384px;
 }
 
-h1, h2, body {
+h1, h2 {
 	font-family: 'Roboto Slab', sans-serif;
 }
-
-hr {
-	width: 80%;
-	line-height: 12px;
-}
-
 
 .logo {
 	margin-top: 10px;
@@ -63,7 +58,6 @@ hr {
 
 .nav-item {
 	text-align: center;
-	font-size: 16px;
 	font-family: 'Oswald', sans-serif;
 	width: 50px;
 	height: 50px;
@@ -77,7 +71,7 @@ hr {
 	cursor: pointer;
 	float: left;
 	overflow: hidden;
-	margin: 0px 10px 10px 10px;
+	margin: 0px 7px 10px 7px;
 }
 
 .nav-item:hover > .icon {
@@ -241,13 +235,14 @@ hr {
 @media (max-width: 1199px) {
   .navbar-header {
       float: none;
-
+      text-align: center;
   }
   .navbar-left,.navbar-right {
       float: none !important;
   }
   .navbar-toggle {
       display: block;
+      float: none;
   }
   .navbar-collapse {
       border-top: 1px solid transparent;
@@ -260,6 +255,9 @@ hr {
   }
   .navbar-collapse.collapse {
       display: none!important;
+      width: 75px;
+      		margin-left: -15px;
+		margin-right: -15px;
 
   }
   .navbar-nav {
@@ -275,17 +273,17 @@ hr {
   }
   .collapse.in{
       display:block !important;
-
   }
 
   .sub-menu{
-  	width:100px;
+  	width:75px;
   }
 
   .footer{
-  	width:100px;
+  	width:75px;
   	position: absolute;
     top: 0;
     right: 15px;
   }
+
 }
