@@ -201,73 +201,75 @@ function placeMarkerAndPanTo(data, map, i) {
     if (curCategory == "alt-fuel") { 
   
     // Parks content for infowindow 
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Alternative Fuel Station</div>' 
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Alternative Fuel Station</div>'; 
 
       var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
-      // var statCitySt = '<div> City, State </div><p>' + dispData[i].city + ', ' + dispData[i].state + '</p>';
       var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
 
-      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>';
 
     // Green roofs content for infowindow 
     } else if (curCategory == "greenRoofs") {
+      console.log(dispData[i].name); 
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>'; 
 
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
-
-      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
-      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      var roofAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
    
-      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+      var winContent = '<div class="iw-scroll">' + roofAddr + '</div>';  
 
-      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
-
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>';
 
     // Parks content for infowindow 
     } else if (curCategory == "parks") { 
       
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Parks</div>'; 
 
-      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
-      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      var parkName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var parkAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
-   
-      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+      var winContent = '<div class="iw-scroll">' + parkName + parkAddr + '</div>';  
 
-      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>';
     
     // Divvy content for infowindow 
-    } if else (curCategory == "divvy") {
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
+    } else if (curCategory == "divvy") {
+      
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Divvy Station</div>'; 
 
-      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
-      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
-      + dispData[i].city + ', ' + dispData[i].state + '</p>';
-   
-      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].stAddress1 + '</p>';
+
+      var statDocks = '<div class="iw-subTitle">Dock Details</div><p>Total Docks: '+ dispData[i].totalDocks + '<br> Bikes available: ' + dispData[i].availableBikes + 
+        '<br> Docks available: ' + dispData[i].availableDocks +'</p>';
+
+      var statUpdate = '<div class="iw-subTitle">Last Update</div><p>' + dispData[i].lastCommunicationTime + '</p>';
+      
+      var winContent = '<div class="iw-scroll">' + statAddr + statDocks + statUpdate +'</div>';  
 
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
 
     // Divvy content for infowindow 
     } else if (curCategory == "markets") {
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
+      
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Farmer\'s Market</div>' 
 
-      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
-      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      var marketName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var marketAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
-   
-      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+      var marketDate = '<div class="iw-subTitle">Dates: </div><p>' + dispData[i].startDate + ' to ' + dispData[i].endDate + '</p>';;
+      var marketTime = '<div class="iw-subTitle">Name</div><p>' + dispData[i].startTime + ' to ' + dispData[i].endTime + '</p>';;
+
+      var winContent = '<div class="iw-scroll">' + marketName + marketAddr + marketDate + marketTime + '</div>';  
 
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
     }
 
     // other categories divvy, markets, parks  
 
-    console.log(contentString);
     var infowindow = new google.maps.InfoWindow({
-          content: contentString
+          content: contentString,
         });
 
 
@@ -285,15 +287,7 @@ function placeMarkerAndPanTo(data, map, i) {
       
     google.maps.event.addListener(marker, 'click', function(e){
 
-    // MODAL OPTION  
-      // console.log('marker clicked'+marker.id); 
-      // $('#mod-title').text(dispData[marker.id].address);
-      // console.log(dispData[marker.id].address);
-      // $('#mod-details').html(contentString); 
-      // $('#myModal').modal('show');
-
       map.setCenter(marker.getPosition());
-
       google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
       });

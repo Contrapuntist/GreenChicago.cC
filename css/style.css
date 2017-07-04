@@ -129,15 +129,15 @@ hr {
 /*****************************/
 
 .gm-style-iw {
-	background-color: #2e4600;
-	color: white;
+	color: #333333;
 }
 
 .infoWinContainer { 
 	font-family: 'Open Sans Condensed', sans-serif;
 	width: 275px;
 	height: 175px;
-	color: white;
+	color: #333333;
+ 	padding-left: 2px;
  }
 
 
@@ -147,9 +147,8 @@ hr {
 	font-size: 18px;
 	padding: 10px;
 	margin-bottom: 5px;
-	background-color: #486b00;
+	background-color: #B3DDF2;
 	color: white;
-
 } 
 
 .iw-subTitle { 
@@ -157,7 +156,7 @@ hr {
 	font-size: 16px;
 	font-weight: 700;
 	padding: 5px 0;
-	color: white; 	
+	color: #FF0000; 	
 } 
 
 #iw-container .iw-title {
@@ -180,7 +179,6 @@ hr {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-
 
 .iw-scroll::-webkit-scrollbar-track
 {
