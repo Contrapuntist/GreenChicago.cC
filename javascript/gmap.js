@@ -5,7 +5,7 @@ var pos={
   lng: -87.6298  
 };
 
-
+var contentString;
 
 var readDb=firebase.database();
 //var curCat='alt-fuel';
@@ -196,43 +196,76 @@ var i=0;
 function placeMarkerAndPanTo(data, map, i) {
     var marker;
     var newDiv = $("<div>"); 
-    var contentString;
 
+    // Condition to determine content for Google Map InfoWindow
     if (curCategory == "alt-fuel") { 
-      contentString = '<div id="iw-container">' + 
-                '<div class="iw-title">' + 
-                '<span class="fa-stack fa-lg icon"><i class="fa fa-circle-thin fa-stack-2x"></i> ' + 
-                '<i class="fa fa-bolt fa-stack-1x"></i></span>' + 
-                ' EV Station</div>' +
-                '<div class="iw-content">' +
-                  '<div class="iw-subTitle"> Address</div>' +
-                  '<p>' + dispData[i].address + '</p>' +
-                  '<div class="iw-subTitle"> </div>' +
-                  '<p>' + 'test' +'<br>'+
-                '</div>' +
-                // '<div class="iw-bottom-gradient"></div>' +
-              '</div>'; 
+  
+    // Parks content for infowindow 
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Alternative Fuel Station</div>' 
+
+      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      + dispData[i].city + ', ' + dispData[i].state + '</p>';
+      // var statCitySt = '<div> City, State </div><p>' + dispData[i].city + ', ' + dispData[i].state + '</p>';
+      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
+
+    // Green roofs content for infowindow 
     } else if (curCategory == "greenRoofs") {
 
-          contentString = '<div id="iw-container">' + 
-                    '<div class="iw-title">Green Roof</div>' +
-                    '<div class="iw-content">' +
-                      '<div class="iw-subTitle"> Address' + dispData[i].address + '</div>' +
-                      '<p> text example </p>' +
-                      '<div class="iw-subTitle">other info</div>' +
-                      '<p>' + 'test' +'<br>'+
-                    '</div>' +
-                    // '<div class="iw-bottom-gradient"></div>' +
-                  '</div>';
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
 
-    } else { 
+      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      + dispData[i].city + ', ' + dispData[i].state + '</p>';
+   
+      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
 
-      console.log ('category parks, divvy, markets or unknown');
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
+
+
+    // Parks content for infowindow 
+    } else if (curCategory == "parks") { 
+      
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
+
+      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      + dispData[i].city + ', ' + dispData[i].state + '</p>';
+   
+      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
+    
+    // Divvy content for infowindow 
+    } if else (curCategory == "divvy") {
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
+
+      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      + dispData[i].city + ', ' + dispData[i].state + '</p>';
+   
+      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
+
+    // Divvy content for infowindow 
+    } else if (curCategory == "markets") {
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>' 
+
+      var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
+      var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
+      + dispData[i].city + ', ' + dispData[i].state + '</p>';
+   
+      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+
+      contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
     }
 
     // other categories divvy, markets, parks  
 
-
+    console.log(contentString);
     var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -251,7 +284,6 @@ function placeMarkerAndPanTo(data, map, i) {
     markerArray.push(marker);
       
     google.maps.event.addListener(marker, 'click', function(e){
-             
 
     // MODAL OPTION  
       // console.log('marker clicked'+marker.id); 
@@ -260,13 +292,14 @@ function placeMarkerAndPanTo(data, map, i) {
       // $('#mod-details').html(contentString); 
       // $('#myModal').modal('show');
 
+      map.setCenter(marker.getPosition());
 
       google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
       });
 
       infowindow.open(map, marker);
-        
+      
     });
 
 }
@@ -309,12 +342,13 @@ function getCurLocation(){
     }
     else{
       return null;
-    }
-    
+    }   
 }
 
 
+function altfuelWindow (val) { 
 
+  }
 
 
 

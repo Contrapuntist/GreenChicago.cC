@@ -128,35 +128,48 @@ hr {
 /* infowindow customizations */ 
 /*****************************/
 
-/*.gm-style-iw {
-	width: 100%;
-	top: 15px !important;
-	left: 0px !important;
-	background-color: #fff;
-	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-	border: 1px solid rgba(72, 181, 233, 0.6);
-	border-radius: 10px 10px 10px 10px;
+.gm-style-iw {
+	background-color: #2e4600;
+	color: white;
 }
-#iw-container {
-	margin-bottom: 10px;
-}*/
 
-.iwTitle { 
-
-
+.infoWinContainer { 
+	font-family: 'Open Sans Condensed', sans-serif;
+	width: 275px;
+	height: 175px;
+	color: white;
  }
 
+
+.iw-Title { 
+
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 18px;
+	padding: 10px;
+	margin-bottom: 5px;
+	background-color: #486b00;
+	color: white;
+
+} 
+
+.iw-subTitle { 
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	padding: 5px 0;
+	color: white; 	
+} 
+
 #iw-container .iw-title {
-	width: 300px;
-	font-family: 'Roboto Slab', sans-serif;
+	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 22px;
 	font-weight: 400;
 	padding: 10px;
-	background-color: #B3DDF2;
+	background-color: #48b5e9;
 	color: white;
 	margin: 0;
 	border-radius: 2px 2px 0 0;
-} 
+}
 #iw-container .iw-content {
 	font-size: 13px;
 	line-height: 18px;
@@ -167,6 +180,7 @@ hr {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
 
 .iw-scroll::-webkit-scrollbar-track
 {
@@ -185,25 +199,7 @@ hr {
 {
 	border-radius: 5px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #D62929;
-}
-
-
-.iw-subTitle {
-	font-size: 16px;
-	font-weight: 700;
-	padding: 5px 0;
-}
-/*.iw-bottom-gradient {
-	position: absolute;
-	width: 326px;
-	height: 25px;
-	bottom: 10px;
-	right: 18px;
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background-color: #a2c523;
 }*/
 
 
