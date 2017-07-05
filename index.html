@@ -21,10 +21,10 @@
 		<div class="container-fluid mapwrapper">
 
 				  	<div class="weather">
-				  		<div class="current-temp fl-l">80&#176;</div>
+				  		<div class="current-temp fl-l"><span id="temp-now">--</span>&#176;</div>
 				  		<div class="fl-l">
-				  			<div class="weather-row">HI: 81&#176;</div>
-				  			<div class="weather-row">LO: 70&#176;</div>
+				  			<div class="weather-row">HI: <span id="temp-hi">--</span>&#176;</div>
+				  			<div class="weather-row">LO: <span id="temp-lo">--</span>&#176;</div>
 				  		</div>
 				  	</div>
 
@@ -121,9 +121,8 @@
 
 	    	</div>
 
-			
-			<div class="row mapwrapper">
-				<div class="col-lg-10 mapwrapper">
+			<!-- Map content-->
+			<div class="mapwrapper">
 				<div id="googlemaptest" class='mapwrapper'></div>
 			</div> 
 

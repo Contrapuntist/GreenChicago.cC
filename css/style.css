@@ -298,10 +298,6 @@ h1, h2 {
 		visibility: visible;
 	}
 
-	.footer {
-		visibility: visible;
-	}
-
 	.mapwrapper {
 		clear:none;
 	}
@@ -388,4 +384,8 @@ h1, h2 {
   	margin: 10px 0px 0px 0px;
   }
 
+  .mapwrapper {
+  	position: relative;
+	overflow: visible;
+  }
 }
