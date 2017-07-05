@@ -218,8 +218,14 @@ function placeMarkerAndPanTo(data, map, i) {
       map: map,
       id: i,
       icon: {
-        url: './images/Test.svg'
+        //url: './images/FarmersMarket_Icon.png'
         //size: new google.maps.Size(50, 50)
+        path: fontawesome.markers.CIRCLE_THIN,
+        path: fontawesome.markers.CUTLERY,
+        scale: 0.5,
+        strokeOpacity: 1,
+        fillColor: 'blue',
+        fillOpacity: 1
     }
     });
     
