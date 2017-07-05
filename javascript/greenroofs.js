@@ -38,12 +38,9 @@ function getGreenRoofsData () {
 
 	}
 
-	getGreenRoofsData ();
+	//getGreenRoofsData ();
 
-	database.ref().on("child_added", function(snap) {
-	  var name = snap.key;
-	  console.log ('key name is ' + name);
-	});
+
 
 });
 
