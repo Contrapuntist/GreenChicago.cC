@@ -13,8 +13,13 @@ html, body, .mapwrapper {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: 'Poiret One', sans-serif;
 }
 
+input {
+	font-size: 14px;
+	width: 55px;
+}
 .mapwrapper{
 	clear: both;
 }
@@ -22,22 +27,15 @@ html, body, .mapwrapper {
 .navwrapper {
 	margin: 0 auto;
 	height: 65px;
-	width: 390px;
+	width: 384px;
 }
 
-h1, h2, body {
+h1, h2 {
 	font-family: 'Roboto Slab', sans-serif;
 }
 
-hr {
-	width: 80%;
-	line-height: 12px;
-}
-
-
 .logo {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 10px;
 }
 
 .logo-text {
@@ -51,42 +49,38 @@ hr {
 }
 
 .stars {
-	margin: 10px 0px 0px 0px;
+	margin: 20px 0px 10px 0px;
 	padding: 0;
 	clear: both;
 	width: 100px;
 }
-.navbar {
+.nav-container {
 	min-height: 200px;
 	height: 200px;
 }
 
 .nav-item {
-	margin: 0 auto;
 	text-align: center;
-	font-size: 16px;
 	font-family: 'Oswald', sans-serif;
 	width: 50px;
 	height: 50px;
 	margin-bottom: 10px;
-	border: 1px solid;
+	border: 1px solid #ffffff;
 	padding: 5px;
 	color: #3D3D3D;
-	border-color: #ffffff;
-	border-radius: 7px;
-	border-style: double;
 	cursor: pointer;
 	float: left;
 	overflow: hidden;
-	margin-right: 15px;
+	margin: 0px 7px 10px 7px;
 }
 
-.nav-item:hover > .icon {
+.nav-item:hover {
 	transition-duration: 0.25s;
-	color:red;
+	color:green; 
 }
 
-.nav-item:active > .icon {
+.nav-item:hover > .nav-text {
+	transition-duration: 0.25s;
 	color:green;
 }
 
@@ -96,33 +90,91 @@ hr {
 	background-color: #E2FFD7;
 }
 
+.nav-item:active > .icon {
+	transition-duration: 0.1s;
+	color:green;
+	font-size: 21px;
+}
+
 .nav-text {
 	visibility: hidden;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 80%;
-  /* Set the fixed height of the footer here */
-  height: 100px;
-  visibility: hidden;
+.sub-menu {
+	background-color: #ffffff;
+	border: none;
 }
 
-.footer-item {
-	margin: 0 auto;
-	font-size: 16px;
-	font-family: 'Poiret One', sans-serif;
-	width: 80%;
+.footer {
+ 	position: absolute;
+ 	bottom: 0;
+ 	width: 80%;
+ 	/* Set the fixed height of the footer here */
+ 	height: 100px;
 }
 
 .icon {
-	font-size: 18px;
+	font-size: 20px;
 }
 
-.icon:hover {
-	color:red;
+.active-button {
+	color:green;
 }
+
+.weather {
+	width: 120px;
+	font-family: 'Oswald', sans-serif;
+	position: absolute;
+  	top: 80px;
+  	right: 15px;
+  	z-index: 99;
+}
+
+.weather-row {
+	height: 23px;
+	width: 60px;
+	text-align: center;
+}
+
+.current-temp {
+	font-size: 32px;
+	text-align: center;
+	height: 46px;
+	width: 60px;
+	border-right: 1px solid;
+	text-align: center;
+}
+
+.fl-l {
+	float: left;
+}
+
+.fl-r {
+	float: right;
+}
+
+.navbar-nav>li {
+	float: none;
+}
+
+.navbar-nav>li>a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: 75px;
+ }
+
+ .zip-search {
+ 	font-family: 'Oswald', sans-serif;
+ 	padding: 10px;
+ 	background-color: #e8e8e8;
+ 	border: 1px solid;
+ 	text-align: left;
+  	width: 160px;
+  	position: absolute;
+  	top: 20px;
+  	right: 20px;
+  	z-index: 98;
+ }
 
 /*****************************/
 /* infowindow customizations */ 
@@ -204,20 +256,27 @@ hr {
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
-
 /* Small devices (tablets, 768px and up) */
-@media(max-width:767px){
 
+@media(max-width:767px){
+  .navbar-nav>li>a {
+      margin-left: 0px;
+	  margin-right: 0px;
+  }
 }
 
 @media(min-width:768px){
-
-
-
+  .navbar-nav>li>a {
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
 }
+
 @media(min-width:992px){
-
-
+  .navbar-nav>li>a {
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
 }
 
 @media(min-width:1200px){
@@ -239,10 +298,6 @@ hr {
 		visibility: visible;
 	}
 
-	.footer {
-		visibility: visible;
-	}
-
 	.mapwrapper {
 		clear:none;
 	}
@@ -252,8 +307,85 @@ hr {
 		position: relative;
 	}
 
-	.stars {
-		margin-bottom: 30px;
-	}
+  .navbar-nav>li>a {
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
 }
 
+@media (max-width: 1199px) {
+  .navbar-header {
+      float: none;
+      margin: 0 auto;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+      float: none;
+      margin: 0 auto;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      text-align: center;
+      margin-top:5px;
+  }
+  .navbar-fixed-top {
+      top: 0;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+      width: 75px;
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: center;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+  .sub-menu{
+  	width:75px;
+  }
+  .footer{
+  	width:75px;
+  	position: absolute;
+    top: 5px;
+    right: 15px;
+  }
+  .weather {
+  	position: absolute;
+  	top: 265px;
+  	right: 15px;
+  	z-index: 99;
+  }
+
+  .zip-search {
+  	text-align: left;
+  	width: 160px;
+  	position: absolute;
+  	top: 200px;
+  	right: 15px;
+  	z-index: 98;
+  }
+
+  .stars {
+  	margin: 10px 0px 0px 0px;
+  }
+
+  .mapwrapper {
+  	position: relative;
+	overflow: visible;
+  }
+}

@@ -19,18 +19,32 @@
 	</head>
 	<body>
 		<div class="container-fluid mapwrapper">
-			
-			<div class="col-lg-2 cntr navbar">
-				
+
+				  	<div class="weather">
+				  		<div class="current-temp fl-l"><span id="temp-now">--</span>&#176;</div>
+				  		<div class="fl-l">
+				  			<div class="weather-row">HI: <span id="temp-hi">--</span>&#176;</div>
+				  			<div class="weather-row">LO: <span id="temp-lo">--</span>&#176;</div>
+				  		</div>
+				  	</div>
+
+					<div class="zip-search">
+						Zip: <input type="text" id="zip-input">
+	      				<button class ="fl-r" id="zip-button">Search</button>
+	      			</div>
+
+			<div class="col-lg-2 cntr navbar-container navbar">
 				
 					<div class="row logo">
 					  	<h1 class="cntr logo-text">GreenSpots</br>Chicago</h1>
 					  	<img class="stars" src="images/ChiStars.svg">
 				  	</div>
+
+
 				
 				<div class="navwrapper">
 
-				  	<div class="row nav-item" id="parks-button">
+				  	<div class="row nav-item" id="parks-button" alt="Parks Hover Test">
 				  		<span class="fa-stack fa-lg icon">
 							<i class="fa fa-circle-thin fa-stack-2x"></i>
 							<i class="fa fa-tree fa-stack-1x"></i>
@@ -45,21 +59,29 @@
 						</span>
 						<span class="nav-text">Charging Stations</span>
 				  	</div>
-				  	
+				  					  	
+				  	<div class="row nav-item" id="bikeshare-button">
+				  		<span class="fa-stack fa-lg icon">
+							<i class="fa fa-circle-thin fa-stack-2x"></i>
+							<i class="fa fa-bicycle fa-stack-1x"></i>
+						</span>
+						<span class="nav-text">Divvy Stations</span>
+				  	</div>
+
+				  	<div class="row nav-item" id="farmersmarket-button">
+				  		<span class="fa-stack fa-lg icon">
+							<i class="fa fa-circle-thin fa-stack-2x"></i>
+							<i class="fa fa-cutlery fa-stack-1x"></i>
+						</span>
+						<span class="nav-text">Farmers Markets</span>
+				  	</div>
+
 				  	<div class="row nav-item" id="greenroof-button">
 				  		<span class="fa-stack fa-lg icon">
 							<i class="fa fa-circle-thin fa-stack-2x"></i>
 							<i class="fa fa-leaf fa-stack-1x"></i>
 						</span>
 						<span class="nav-text">Green Roofs</span>
-				  	</div>
-				  	
-				  	<div class="row nav-item" id="bikeshare-button">
-				  		<span class="fa-stack fa-lg icon">
-							<i class="fa fa-circle-thin fa-stack-2x"></i>
-							<i class="fa fa-bicycle fa-stack-1x"></i>
-						</span>
-						<span class="nav-text">Bike Share Stations</span>
 				  	</div>
 
 				  	<div class="row nav-item" id="recycling-button">
@@ -70,26 +92,37 @@
 						<span class="nav-text">Recycling Centers</span>
 				  	</div>
 
-				  	<div class="row nav-item" id="farmersmarkets-button">
-				  		<span class="fa-stack fa-lg icon">
-							<i class="fa fa-circle-thin fa-stack-2x"></i>
-							<i class="fa fa-cutlery fa-stack-1x"></i>
-						</span>
-						<span class="nav-text">Farmers Markets</span>
-				  	</div>
+
 				</div>
 
+
 				  	<footer class="footer">
-						<div class="row footer-item">About</div>
-						<div class="row footer-item">Contact</div>
-				  	</footer>
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default sub-menu">
+        <div class="container-fluid sub-menu">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+	</footer>
 		    	
 
 	    	</div>
 
-			
-			<div class="row mapwrapper">
-				<div class="col-lg-10 mapwrapper">
+			<!-- Map content-->
+			<div class="mapwrapper">
 				<div id="googlemaptest" class='mapwrapper'></div>
 			</div> 
 
