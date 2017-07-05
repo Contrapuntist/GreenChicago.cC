@@ -19,18 +19,32 @@
 	</head>
 	<body>
 		<div class="container-fluid mapwrapper">
-			
+
+				  	<div class="weather">
+				  		<div class="current-temp fl-l">80&#176;</div>
+				  		<div class="fl-l">
+				  			<div class="weather-row">HI: 81&#176;</div>
+				  			<div class="weather-row">LO: 70&#176;</div>
+				  		</div>
+				  	</div>
+
+					<div class="zip-search">
+						Zip: <input type="text" id="zip-input">
+	      				<button class ="fl-r" id="zip-button">Search</button>
+	      			</div>
+
 			<div class="col-lg-2 cntr navbar-container navbar">
-				
 				
 					<div class="row logo">
 					  	<h1 class="cntr logo-text">GreenSpots</br>Chicago</h1>
 					  	<img class="stars" src="images/ChiStars.svg">
 				  	</div>
+
+
 				
 				<div class="navwrapper">
 
-				  	<div class="row nav-item" id="parks-button">
+				  	<div class="row nav-item" id="parks-button" alt="Parks Hover Test">
 				  		<span class="fa-stack fa-lg icon">
 							<i class="fa fa-circle-thin fa-stack-2x"></i>
 							<i class="fa fa-tree fa-stack-1x"></i>
@@ -45,21 +59,29 @@
 						</span>
 						<span class="nav-text">Charging Stations</span>
 				  	</div>
-				  	
-				  	<div class="row nav-item" id="greenroof-button">
-				  		<span class="fa-stack fa-lg icon">
-							<i class="fa fa-circle-thin fa-stack-2x"></i>
-							<i class="fa fa-leaf fa-stack-1x"></i>
-						</span>
-						<span class="nav-text">Green Roofs</span>
-				  	</div>
-				  	
+				  					  	
 				  	<div class="row nav-item" id="bikeshare-button">
 				  		<span class="fa-stack fa-lg icon">
 							<i class="fa fa-circle-thin fa-stack-2x"></i>
 							<i class="fa fa-bicycle fa-stack-1x"></i>
 						</span>
 						<span class="nav-text">Divvy Stations</span>
+				  	</div>
+
+				  	<div class="row nav-item" id="farmersmarket-button">
+				  		<span class="fa-stack fa-lg icon">
+							<i class="fa fa-circle-thin fa-stack-2x"></i>
+							<i class="fa fa-cutlery fa-stack-1x"></i>
+						</span>
+						<span class="nav-text">Farmers Markets</span>
+				  	</div>
+
+				  	<div class="row nav-item" id="greenroof-button">
+				  		<span class="fa-stack fa-lg icon">
+							<i class="fa fa-circle-thin fa-stack-2x"></i>
+							<i class="fa fa-leaf fa-stack-1x"></i>
+						</span>
+						<span class="nav-text">Green Roofs</span>
 				  	</div>
 
 				  	<div class="row nav-item" id="recycling-button">
@@ -70,14 +92,9 @@
 						<span class="nav-text">Recycling Centers</span>
 				  	</div>
 
-				  	<div class="row nav-item" id="farmersmarket-button">
-				  		<span class="fa-stack fa-lg icon">
-							<i class="fa fa-circle-thin fa-stack-2x"></i>
-							<i class="fa fa-cutlery fa-stack-1x"></i>
-						</span>
-						<span class="nav-text">Farmers Markets</span>
-				  	</div>
+
 				</div>
+
 
 				  	<footer class="footer">
       <!-- Static navbar -->

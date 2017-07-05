@@ -93,24 +93,52 @@ appObj.init();
 
 $("#charger-button").on("click", function() {
         readData("alt-fuel");
+        clearStates();
+        addActive("#charger-button");
       });
 
 $("#greenroof-button").on("click", function() {
         readData("greenRoofs");
+        clearStates();
+        addActive("#greenroof-button");
       });
 
 $("#parks-button").on("click", function() {
         readData("parks");
+        clearStates();
+        addActive("#parks-button");
       });
 
 $("#bikeshare-button").on("click", function() {
-        readData("divvy");
+        readData("divvy");        
+        clearStates();
+        addActive("#bikeshare-button");
       });
 
-$("#farmersmarkets-button").on("click", function() {
+$("#farmersmarket-button").on("click", function() {
         readData("markets");
+        clearStates();
+        addActive("#farmersmarket-button");
+      });
+
+$("#recycling-button").on("click", function() {
+        readData("recycling");
+        clearStates();
+        addActive("#recycling-button");
       });
 
 
+function clearStates() {
+	$("#charger-button").removeClass("active-button");
+	$("#greenroof-button").removeClass("active-button");
+	$("#parks-button").removeClass("active-button");
+	$("#bikeshare-button").removeClass("active-button");
+	$("#farmersmarket-button").removeClass("active-button");
+	$("#recycling-button").removeClass("active-button");
+}
+
+function addActive(button) {
+	$(button).addClass("active-button");
+}
 
 

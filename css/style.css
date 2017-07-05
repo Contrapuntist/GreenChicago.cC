@@ -13,9 +13,13 @@ html, body, .mapwrapper {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Poiret One', sans-serif;
 }
 
+input {
+	font-size: 14px;
+	width: 55px;
+}
 .mapwrapper{
 	clear: both;
 }
@@ -31,8 +35,7 @@ h1, h2 {
 }
 
 .logo {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 10px;
 }
 
 .logo-text {
@@ -46,7 +49,7 @@ h1, h2 {
 }
 
 .stars {
-	margin: 10px 0px 0px 0px;
+	margin: 20px 0px 10px 0px;
 	padding: 0;
 	clear: both;
 	width: 100px;
@@ -62,24 +65,22 @@ h1, h2 {
 	width: 50px;
 	height: 50px;
 	margin-bottom: 10px;
-	border: 1px solid;
+	border: 1px solid #ffffff;
 	padding: 5px;
 	color: #3D3D3D;
-	border-color: #ffffff;
-	border-radius: 7px;
-	border-style: double;
 	cursor: pointer;
 	float: left;
 	overflow: hidden;
 	margin: 0px 7px 10px 7px;
 }
 
-.nav-item:hover > .icon {
+.nav-item:hover {
 	transition-duration: 0.25s;
-	color:red;
+	color:green; 
 }
 
-.nav-item:active > .icon {
+.nav-item:hover > .nav-text {
+	transition-duration: 0.25s;
 	color:green;
 }
 
@@ -87,6 +88,12 @@ h1, h2 {
 	transition-duration: 0.25s;
 	color:green;
 	background-color: #E2FFD7;
+}
+
+.nav-item:active > .icon {
+	transition-duration: 0.1s;
+	color:green;
+	font-size: 21px;
 }
 
 .nav-text {
@@ -99,27 +106,75 @@ h1, h2 {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 80%;
-  /* Set the fixed height of the footer here */
-  height: 100px;
-}
-
-.footer-item {
-	margin: 0 auto;
-	font-size: 16px;
-	font-family: 'Poiret One', sans-serif;
-	width: 80%;
+ 	position: absolute;
+ 	bottom: 0;
+ 	width: 80%;
+ 	/* Set the fixed height of the footer here */
+ 	height: 100px;
 }
 
 .icon {
-	font-size: 18px;
+	font-size: 20px;
 }
 
-.icon:hover {
-	color:red;
+.active-button {
+	color:green;
 }
+
+.weather {
+	width: 120px;
+	font-family: 'Oswald', sans-serif;
+	position: absolute;
+  	top: 80px;
+  	right: 15px;
+  	z-index: 99;
+}
+
+.weather-row {
+	height: 23px;
+	width: 60px;
+	text-align: center;
+}
+
+.current-temp {
+	font-size: 32px;
+	text-align: center;
+	height: 46px;
+	width: 60px;
+	border-right: 1px solid;
+	text-align: center;
+}
+
+.fl-l {
+	float: left;
+}
+
+.fl-r {
+	float: right;
+}
+
+.navbar-nav>li {
+	float: none;
+}
+
+.navbar-nav>li>a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: 75px;
+ }
+
+ .zip-search {
+ 	font-family: 'Oswald', sans-serif;
+ 	padding: 10px;
+ 	background-color: #e8e8e8;
+ 	border: 1px solid;
+ 	text-align: left;
+  	width: 160px;
+  	position: absolute;
+  	top: 20px;
+  	right: 20px;
+  	z-index: 98;
+ }
 
 /*****************************/
 /* infowindow customizations */ 
@@ -181,18 +236,27 @@ h1, h2 {
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
-
 /* Small devices (tablets, 768px and up) */
-@media(max-width:767px){
 
+@media(max-width:767px){
+  .navbar-nav>li>a {
+      margin-left: 0px;
+	  margin-right: 0px;
+  }
 }
 
 @media(min-width:768px){
-
+  .navbar-nav>li>a {
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
 }
 
 @media(min-width:992px){
-
+  .navbar-nav>li>a {
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
 }
 
 @media(min-width:1200px){
@@ -227,15 +291,16 @@ h1, h2 {
 		position: relative;
 	}
 
-	.stars {
-		margin-bottom: 30px;
-	}
+  .navbar-nav>li>a {
+      margin-left: -15px;
+	  margin-right: -15px;
+  }
 }
 
 @media (max-width: 1199px) {
   .navbar-header {
       float: none;
-      text-align: center;
+      margin: 0 auto;
   }
   .navbar-left,.navbar-right {
       float: none !important;
@@ -243,22 +308,21 @@ h1, h2 {
   .navbar-toggle {
       display: block;
       float: none;
+      margin: 0 auto;
   }
   .navbar-collapse {
       border-top: 1px solid transparent;
-      text-align: left;
-
+      text-align: center;
+      margin-top:5px;
   }
   .navbar-fixed-top {
       top: 0;
-      /*border-width: 0 0 1px;*/
   }
   .navbar-collapse.collapse {
       display: none!important;
       width: 75px;
-      		margin-left: -15px;
-		margin-right: -15px;
-
+      margin-left: -15px;
+	  margin-right: -15px;
   }
   .navbar-nav {
       float: none!important;
@@ -268,22 +332,40 @@ h1, h2 {
       float: none;
   }
   .navbar-nav>li>a {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: center;
   }
   .collapse.in{
       display:block !important;
   }
-
   .sub-menu{
   	width:75px;
   }
-
   .footer{
   	width:75px;
   	position: absolute;
-    top: 0;
+    top: 5px;
     right: 15px;
+  }
+  .weather {
+  	position: absolute;
+  	top: 265px;
+  	right: 15px;
+  	z-index: 99;
+  }
+
+  .zip-search {
+  	text-align: left;
+  	width: 160px;
+  	position: absolute;
+  	top: 200px;
+  	right: 15px;
+  	z-index: 98;
+  }
+
+  .stars {
+  	margin: 10px 0px 0px 0px;
   }
 
 }

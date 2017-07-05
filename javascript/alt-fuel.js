@@ -6,7 +6,7 @@ var database = firebase.database();
 function getStations() {
 		
 
-		var url = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&state=IL&api_key=kB2SaaDEdXCxCix259XMS6pGe9xe0ReaQAcBmkp8&format=JSON";
+		var url = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&state=IL&" + altFuelKey + "&format=JSON";
 
 
 		console.log(url);
@@ -49,6 +49,5 @@ function getStations() {
 			});
 };
 
-//getStations();
 
 
