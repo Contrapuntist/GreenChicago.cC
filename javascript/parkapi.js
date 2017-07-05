@@ -30,25 +30,25 @@ function getParks() {
 				tmpAddress.push(address.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
 	    		var curAddress=tmpAddress.join(',');
 	    		var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?key="+geoCodeKey+"&address="+curAddress;
-	   $.ajax({
-	      url: getLatLng,
-	      method: "GET"
-	      }).done(function(response){
-	      	if(response.results[0].geometry){
-	      	loopObject = {
-					lat: response.results[0].geometry.location.lat,
-					long: response.results[0].geometry.location.lng,
-					zip: zip,
-					address: address,
-					city: city,
-					state: state,
-					name: name,
-					id: id
-				};
-	     	parkArray.push(loopObject); 
-	     	}  
-        
-    		});
+			   $.ajax({
+			      url: getLatLng,
+			      method: "GET"
+			      }).done(function(response){
+			      	if(response.results[0].geometry){
+			      	loopObject = {
+							lat: response.results[0].geometry.location.lat,
+							long: response.results[0].geometry.location.lng,
+							zip: zip,
+							address: address,
+							city: city,
+							state: state,
+							name: name,
+							id: id
+						};
+			     	parkArray.push(loopObject); 
+			     	}  
+		        
+		    		});
 
 
 		}			
