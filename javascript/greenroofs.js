@@ -17,6 +17,7 @@ function getGreenRoofsData () {
 		    }
 		}).done(function(data) {
 			
+			console.log(data);
 			for (var i = 0; i < data.length; i++ ) {
 				dataObj = {
 					roofID: data[i].id, 
@@ -37,7 +38,9 @@ function getGreenRoofsData () {
 
 	}
 
-//getGreenRoofsData ();
+	//getGreenRoofsData ();
+
+
 
 });
 
