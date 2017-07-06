@@ -147,7 +147,7 @@ function placeMarkerAndPanTo(data, map, i) {
       iconImg = './images/bolt.png';
     
     // Parks content for infowindow 
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Alternative Fuel Station</div>'; 
+      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i>  Alternative Fuel Station</div>'; 
 
       var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
@@ -161,7 +161,7 @@ function placeMarkerAndPanTo(data, map, i) {
 
       iconImg = './images/leaf.png';
 
-      var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>'; 
+      var winCat = '<div class="iw-Title"><i class="fa fa-leaf"></i>  Green Roof</div>'; 
 
       var roofAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
@@ -175,7 +175,7 @@ function placeMarkerAndPanTo(data, map, i) {
       
       iconImg = './images/tree.png';
 
-      var winCat = '<div class="iw-Title"><i class="fa fa-tree"></i> Parks</div>'; 
+      var winCat = '<div class="iw-Title"><i class="fa fa-tree"></i>  Parks</div>'; 
 
       var parkName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var parkAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
@@ -189,7 +189,7 @@ function placeMarkerAndPanTo(data, map, i) {
       
       iconImg = './images/bicycle.png';
 
-      var winCat = '<div class="iw-Title"><i class="fa fa-bicycle"></i> Divvy Station</div>'; 
+      var winCat = '<div class="iw-Title"><i class="fa fa-bicycle"></i>  Divvy Station</div>'; 
 
       var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].stAddress1 + '</p>';
 
@@ -207,7 +207,7 @@ function placeMarkerAndPanTo(data, map, i) {
       
       iconImg = './images/cutlery.png';
 
-      var winCat = '<div class="iw-Title"><i class="fa fa-cutlery"></i> Farmer\'s Market</div>' 
+      var winCat = '<div class="iw-Title"><i class="fa fa-cutlery"></i>  Farmer\'s Market</div>' 
 
       var marketName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var marketAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
@@ -220,7 +220,6 @@ function placeMarkerAndPanTo(data, map, i) {
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
     }
 
-    // other categories divvy, markets, parks  
 
     var infowindow = new google.maps.InfoWindow({
           content: contentString,
