@@ -134,9 +134,9 @@ $("#zip-button").on("click", function(event) {
 	var zipInput = $("#zip-input").val().trim();
 	var zipNumber = parseInt(zipInput);
 	if(checkZip(zipNumber)){
-	zipSearch(zipInput);
+		zipSearch(zipInput);
 	}
-	});
+});
 
 function checkZip(zipCode) {
 	if (chicagoZipcodes.indexOf(zipCode) === -1) {

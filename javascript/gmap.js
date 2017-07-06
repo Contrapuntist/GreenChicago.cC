@@ -5,14 +5,15 @@ var pos={
   lng: -87.6298  
 };
 
+var zoomLevel=10;
+
 var contentString;
 
 var readDb=firebase.database();
 
 //To read data from firebase based on category passed
 function readData(curCat){
-  map.setCenter(pos);
-  map.setZoom(10);
+
   curCategory=curCat;
   dispData={};
   removeMarkers();
@@ -78,17 +79,13 @@ function geoLocFail(position){
 function displayMap(){
     map = new google.maps.Map(document.getElementById('googlemaptest'), {
             center: pos,
-            zoom: 10,
+            zoom: zoomLevel,
             mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
     var initMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat,pos.lng),
       map: map,     
-      icon: {
-        url: './images/home.png',
-        size: new google.maps.Size(50, 50)
-    }
     });   
 }
 
@@ -96,13 +93,13 @@ function displayMap(){
 //function to set map center based on entered zip code
 function zipSearch(zip){
 var geocoder=new google.maps.Geocoder;
-
+zoomLevel=12;
 geocoder.geocode( { 'address': zip}, function(results, status) {
  if (status == google.maps.GeocoderStatus.OK) {
          pos.lat = results[0].geometry.location.lat();
          pos.lng = results[0].geometry.location.lng();
      }
-
+  displayMap();
 });
 }
 
@@ -237,7 +234,8 @@ function placeMarkerAndPanTo(data, map, i) {
 function placeMarkerCluster(){
    markerCluster = new MarkerClusterer(map, markerArray, 
             {
-              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+              //imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+              imagePath: 'markerclusterer/images/m',
               minimumClusterSize: 5
             });
       
