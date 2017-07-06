@@ -25,7 +25,7 @@ zipSearch('60008');
 // app initiate function 
 appObj.init();
 
-// console.log (database.ref("greenRoofs").orderByChild(""));
+
 
 	$('#searchbtn').on('click', function() { 
 		var adr = null;
@@ -35,27 +35,8 @@ appObj.init();
 		console.log(appObj.address);
 		verifyAddress(appObj.address);
 
-	// *** Possible option to check for valid input. But need method to sift through firebase too.  
-    
-    // if (inpObj.checkValidity() == false) {
-    //     document.getElementById("demo").innerHTML = inpObj.validationMessage;
-    // } 
-
-    // ref.child("users").orderByChild("ID").equalTo("U1EL5623").once("value", function(snapshot) {
-    // var userData = snapshot.val();
-    // if (userData){
-    //   console.log("exists!");
-    // }
-	// });
-
-
-
 	});
 
-
-	// prepping USPS ajax call for address validation on search input.    
-	// var uspsurl = 'https://servername/ShippingAPI.dll?API=Verify&XML=<AddressValidateRequest USERID="'+ username + '"><Address ID="0"><Address2>661 Hapsfield Lane</Address2><City>Buffalo Grove</City><State>IL</State><Zip5>60089</Zip5><Zip4></Zip4></Address></AddressValidateRequest>';
-	// console.log(uspsurl);
 
 	function verifyAddress (address) { 
 
@@ -127,6 +108,9 @@ $("#recycling-button").on("click", function() {
         addActive("#recycling-button");
       });
 
+$('#aboutUs').on('click', function() { 
+	$("#aboutModal").modal("show");
+}) 
 // Clears active state from all buttons
 function clearStates() {
 	$("#charger-button").removeClass("active-button");
