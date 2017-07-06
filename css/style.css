@@ -26,7 +26,7 @@ input {
 
 .navwrapper {
 	margin: 0 auto;
-	height: 65px;
+	height: 55px;
 	width: 384px;
 }
 
@@ -38,9 +38,8 @@ h1, h2 {
 	margin: 10px;
 }
 
-.logo-text {
-	line-height: 35px;
-	color: #B3DDF2;
+.logo-image {
+	width:100%;
 }
 
 .cntr {
@@ -49,7 +48,7 @@ h1, h2 {
 }
 
 .stars {
-	margin: 20px 0px 10px 0px;
+	margin: 15px 0px 0px 0px;
 	padding: 0;
 	clear: both;
 	width: 100px;
@@ -71,28 +70,28 @@ h1, h2 {
 	cursor: pointer;
 	float: left;
 	overflow: hidden;
-	margin: 0px 7px 10px 7px;
+	margin: 0px 7px 0px 7px;
 }
 
 .nav-item:hover {
 	transition-duration: 0.25s;
-	color:green; 
+	color:#66CC00; 
 }
 
 .nav-item:hover > .nav-text {
 	transition-duration: 0.25s;
-	color:green;
+	color:#66CC00;
 }
 
 .nav-item:active {
 	transition-duration: 0.25s;
-	color:green;
+	color:#66CC00;
 	background-color: #E2FFD7;
 }
 
 .nav-item:active > .icon {
 	transition-duration: 0.1s;
-	color:green;
+	color:#66CC00;
 	font-size: 21px;
 }
 
@@ -118,7 +117,7 @@ h1, h2 {
 }
 
 .active-button {
-	color:green;
+	color:#66CC00;
 }
 
 .weather {
@@ -286,6 +285,7 @@ h1, h2 {
 		width: 100%;
 		text-align: left;
 		float: none;
+		margin-bottom: 8px;
 	}
 
 	.navbar {
@@ -381,11 +381,17 @@ h1, h2 {
   }
 
   .stars {
-  	margin: 10px 0px 0px 0px;
+  	display: block;
+  	margin: 0 auto;
+  	margin-top: 12px;
   }
 
   .mapwrapper {
   	position: relative;
 	overflow: visible;
+  }
+
+  .logo-image{
+  	width: 275px;
   }
 }
