@@ -31,6 +31,8 @@ var searchZip='60606';
 
 //To read data from firebase based on category passed
 function readData(curCat){
+  map.setCenter(pos);
+  map.setZoom(10);
   curCategory=curCat;
   dispData={};
   console.log(curCategory);
@@ -73,15 +75,11 @@ function initMap() {
 
 //This is to display the markers based on search category and location
 function placeMultiMarkers(){
+
+
   console.log('I am in multi marker');
 
   for (i=0; i< dispData.length; i++) { 
-
-    /*pos.lat=dispData[i].lat;
-    pos.lng=dispData[i].long;
-    placeMarkerAndPanTo(pos, map);*/
-    //pos.address=dispData[i].address;
-
     placeMarkerAndPanTo(dispData[i],map, i);
 
   }
@@ -91,65 +89,12 @@ function placeMultiMarkers(){
 
 
 
-//Find Lat and Long using address
-function getLatitude(street, city, state){
-
-    var tmpAddress=[];
-    tmpAddress.push(street.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
-    var curAddress=tmpAddress.join(',');
-    // console.log(curAddress);
-    var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
-    // console.log(getLatLng);
-    $.ajax({
-      url: getLatLng,
-      method: "GET"
-      }).done(function(response){
-        /*pos.lat=response.results[0].geometry.location.lat;
-        pos.lng=response.results[0].geometry.location.lng;
-        var tmp=[];
-        tmp.push(pos.lat, pos.lng);
-        markerArray.push(tmp);*/
-
-        console.log(response.results[0].geometry.location.lat);
-        return response.results[0].geometry.location.lat;
-
-    });
-}
-
-var tmplat = getLatitude('5501 carriageway dr', 'Rolling Meadows', 'IL');
-
-
-//Find Lat and Long using address
-function getLongitude(street, city, state){
-
-    var tmpAddress=[];
-    tmpAddress.push(street.split(' ').join('+'), city.split(' ').join('+'), state.split(' ').join('+'));
-    var curAddress=tmpAddress.join(',');
-    // console.log(curAddress);
-    var getLatLng="https://maps.googleapis.com/maps/api/geocode/json?address="+curAddress;
-    // console.log(getLatLng);
-    $.ajax({
-      url: getLatLng,
-      method: "GET"
-      }).done(function(response){
-        /*pos.lat=response.results[0].geometry.location.lat;
-        pos.lng=response.results[0].geometry.location.lng;
-        var tmp=[];
-        tmp.push(pos.lat, pos.lng);
-        markerArray.push(tmp);*/
-        var long = response.results[0].geometry.location.lng;
-        return long;
-    });
-}
-
-
 //when location is enabled in browser and user allowed it
 function geoLocSucess(position){
           pos.lat = position.coords.latitude;
           pos.lng = position.coords.longitude;
           displayMap();      
           console.log('I am in success');
-//          readData(curCat); // hard coded alt-fuel key 
 }
 
 //when location is not enabled in browser or enabled but user blocked it
@@ -158,7 +103,6 @@ function geoLocFail(position){
           pos.lng = -87.6298;
           displayMap();    
           console.log('I am in error');
-          //readData(curCat); // hard coded alt-fuel key 
 }
 
 
@@ -172,9 +116,9 @@ function displayMap(){
 
     var initMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat,pos.lng),
-      map: map,
+      map: map,     
       icon: {
-        url: './images/Ptx.png',
+        url: './images/home.png',
         size: new google.maps.Size(50, 50)
     }
     });   
@@ -194,12 +138,13 @@ var i=0;
 
 
 function placeMarkerAndPanTo(data, map, i) {
-    var marker;
+    var marker, iconImg;
     var newDiv = $("<div>"); 
+
 
     // Condition to determine content for Google Map InfoWindow
     if (curCategory == "alt-fuel") { 
-  
+      iconImg = './images/bolt.png';
     // Parks content for infowindow 
       var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Alternative Fuel Station</div>'; 
 
@@ -212,7 +157,10 @@ function placeMarkerAndPanTo(data, map, i) {
 
     // Green roofs content for infowindow 
     } else if (curCategory == "greenRoofs") {
+
       console.log(dispData[i].name); 
+      iconImg = './images/leaf.png';
+
       var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Green Roof</div>'; 
 
       var roofAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
@@ -225,6 +173,8 @@ function placeMarkerAndPanTo(data, map, i) {
     // Parks content for infowindow 
     } else if (curCategory == "parks") { 
       
+      iconImg = './images/tree.png';
+
       var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Parks</div>'; 
 
       var parkName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
@@ -237,6 +187,8 @@ function placeMarkerAndPanTo(data, map, i) {
     // Divvy content for infowindow 
     } else if (curCategory == "divvy") {
       
+      iconImg = './images/bicycle.png';
+
       var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Divvy Station</div>'; 
 
       var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].stAddress1 + '</p>';
@@ -253,6 +205,8 @@ function placeMarkerAndPanTo(data, map, i) {
     // Divvy content for infowindow 
     } else if (curCategory == "markets") {
       
+      iconImg = './images/cutlery.png';
+
       var winCat = '<div class="iw-Title"><i class="fa fa-bolt"></i> Farmer\'s Market</div>' 
 
       var marketName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
@@ -278,8 +232,9 @@ function placeMarkerAndPanTo(data, map, i) {
       map: map,
       id: i,
       icon: {
-        url: './images/Test.svg'
-        //size: new google.maps.Size(50, 50)
+        url: iconImg,
+        size: new google.maps.Size(30, 30)
+
     }
     });
     
@@ -310,35 +265,18 @@ function placeMarkerCluster(){
 
 /*Remove markers from the map*/
 function removeMarkers(){
-  /*for(i=0; i<markerArray.length; i++){
-    markerArray[i].setMap(null);
-  }*/
-  markerArray=[];
- if(markerCluster){
-  markerCluster.clearMarkers();
-  }
-  
 
-}
-
-/*This call will only work with some synchronous call & wait because
-otherwise the call always have it as null need to figure this*/
-function getCurLocation(){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos={
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-          return pos;
-      });
-
+   if(markerCluster){
+    markerCluster.clearMarkers();
     }
     else{
-      return null;
-    }   
-}
+      for(i=0; i<markerArray.length; i++){
+      markerArray[i].setMap(null);
+      }
+    }
+    markerArray=[];
 
+}
 
 function altfuelWindow (val) { 
 
