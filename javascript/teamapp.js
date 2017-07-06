@@ -21,7 +21,7 @@ var goodaddress = null;
 
 //call the function to load map on page load
 initMap();
-
+zipSearch('60008');
 // app initiate function 
 appObj.init();
 

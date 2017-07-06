@@ -11,24 +11,6 @@ var readDb=firebase.database();
 //var curCat='alt-fuel';
 var searchZip='60606';
 
-
-// Specifies 1st node in firebase for alt-fuel
-//var dbChild = '-KnQWmrvNl34dXBFVzss'; 
-
-
-//To read data from firebase based on category passed
-/*function readData(curCat){
-  return readDb.ref(curCat).child(dbChild).once('value').then(function(snapshot){
-    var dispData = snapshot.val();
-
-    var key=Object.keys(dispData); 
-    arrayLength = dispData.length;
-    placeMultiMarkers(dispData);
-
-  });
-}*/
-
-
 //To read data from firebase based on category passed
 function readData(curCat){
   map.setCenter(pos);
