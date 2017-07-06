@@ -252,6 +252,12 @@ h1, h2 {
 }*/
 
 
+/* Modal Customizations */
+
+.modal-content { 
+	color: #B3DDF2;
+}
+
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
