@@ -21,7 +21,7 @@ var goodaddress = null;
 
 //call the function to load map on page load
 initMap();
-zipSearch('60008');
+
 // app initiate function 
 appObj.init();
 
@@ -133,7 +133,9 @@ $("#zip-button").on("click", function(event) {
 	event.preventDefault();
 	var zipInput = $("#zip-input").val().trim();
 	var zipNumber = parseInt(zipInput);
-	checkZip(zipNumber)
+	if(checkZip(zipNumber)){
+	zipSearch(zipInput);
+	}
 	});
 
 function checkZip(zipCode) {

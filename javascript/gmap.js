@@ -8,8 +8,6 @@ var pos={
 var contentString;
 
 var readDb=firebase.database();
-//var curCat='alt-fuel';
-var searchZip='60606';
 
 //To read data from firebase based on category passed
 function readData(curCat){
@@ -17,7 +15,6 @@ function readData(curCat){
   map.setZoom(10);
   curCategory=curCat;
   dispData={};
-  console.log(curCategory);
   removeMarkers();
   
   readDb.ref(curCat).once('value').then(function(snapshot){
@@ -26,10 +23,6 @@ function readData(curCat){
     
     var key=Object.keys(curCatData); 
     dispData = curCatData[key];
-    //var arrayLength = dispData[key].length;
-    console.log(dispData);
-    //console.log(arrayLength);
-    console.log(key);
     placeMultiMarkers();
 
   });
@@ -58,12 +51,8 @@ function initMap() {
 //This is to display the markers based on search category and location
 function placeMultiMarkers(){
 
-
-  console.log('I am in multi marker');
-
-  for (i=0; i< dispData.length; i++) { 
+   for (i=0; i< dispData.length; i++) { 
     placeMarkerAndPanTo(dispData[i],map, i);
-
   }
   placeMarkerCluster();
   
@@ -76,7 +65,6 @@ function geoLocSucess(position){
           pos.lat = position.coords.latitude;
           pos.lng = position.coords.longitude;
           displayMap();      
-          console.log('I am in success');
 }
 
 //when location is not enabled in browser or enabled but user blocked it
@@ -84,7 +72,6 @@ function geoLocFail(position){
           pos.lat = 41.8781;
           pos.lng = -87.6298;
           displayMap();    
-          console.log('I am in error');
 }
 
 
@@ -106,6 +93,19 @@ function displayMap(){
     });   
 }
 
+
+//function to set map center based on entered zip code
+function zipSearch(zip){
+var geocoder=new google.maps.Geocoder;
+
+geocoder.geocode( { 'address': zip}, function(results, status) {
+ if (status == google.maps.GeocoderStatus.OK) {
+         pos.lat = results[0].geometry.location.lat();
+         pos.lng = results[0].geometry.location.lng();
+     }
+
+});
+}
 
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
@@ -243,6 +243,7 @@ function placeMarkerCluster(){
             });
       
 }
+
 
 /*Remove markers from the map*/
 function removeMarkers(){
