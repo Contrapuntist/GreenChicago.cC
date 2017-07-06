@@ -43,7 +43,6 @@ function initMap() {
           pos.lat = 41.8781;
           pos.lng = -87.6298;
           displayMap();
-          console.log('I am in old browser');
     }
 
 }
