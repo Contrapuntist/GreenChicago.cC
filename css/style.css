@@ -14,6 +14,7 @@ html, body, .mapwrapper {
     padding: 0;
     height: 100%;
     font-family: 'Poiret One', sans-serif;
+    font-size: 16px;
 }
 
 input {
@@ -26,21 +27,31 @@ input {
 
 .navwrapper {
 	margin: 0 auto;
-	height: 65px;
+	height: 55px;
 	width: 384px;
 }
 
-h1, h2 {
-	font-family: 'Roboto Slab', sans-serif;
+h1, h2, h3, h4 {
+	font-family: 'Oswald', sans-serif;
+}
+
+h3 {
+	color: #66cc00;
 }
 
 .logo {
 	margin: 10px;
 }
 
-.logo-text {
-	line-height: 35px;
-	color: #B3DDF2;
+.logo-image {
+	width:100%;
+}
+
+.cC-logo {
+	width: 100px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 50px;
 }
 
 .cntr {
@@ -49,7 +60,7 @@ h1, h2 {
 }
 
 .stars {
-	margin: 20px 0px 10px 0px;
+	margin: 15px 0px 0px 0px;
 	padding: 0;
 	clear: both;
 	width: 100px;
@@ -71,28 +82,49 @@ h1, h2 {
 	cursor: pointer;
 	float: left;
 	overflow: hidden;
-	margin: 0px 7px 10px 7px;
+	margin: 0px 7px 0px 7px;
 }
 
 .nav-item:hover {
 	transition-duration: 0.25s;
-	color:green; 
+	color:#66CC00; 
 }
 
 .nav-item:hover > .nav-text {
 	transition-duration: 0.25s;
-	color:green;
+	color:#66CC00;
 }
 
 .nav-item:active {
 	transition-duration: 0.25s;
-	color:green;
+	color:#66CC00;
 	background-color: #E2FFD7;
 }
 
 .nav-item:active > .icon {
 	transition-duration: 0.1s;
-	color:green;
+	color:#66CC00;
+	font-size: 21px;
+}
+
+.future:hover {
+	transition-duration: 0.25s;
+	color: red; 
+}
+
+.future:hover > .nav-text {
+	transition-duration: 0.25s;
+	color: red;
+}
+
+.future:active {
+	transition-duration: 0.25s;
+	color: red;
+	background-color: #ffcccc;
+}
+.future:active > .icon {
+	transition-duration: 0.1s;
+	color: red;
 	font-size: 21px;
 }
 
@@ -101,7 +133,7 @@ h1, h2 {
 }
 
 .sub-menu {
-	background-color: #ffffff;
+	background-color: transparent;
 	border: none;
 }
 
@@ -110,7 +142,7 @@ h1, h2 {
  	bottom: 0;
  	width: 80%;
  	/* Set the fixed height of the footer here */
- 	height: 100px;
+ 	height: 150px;
 }
 
 .icon {
@@ -118,7 +150,7 @@ h1, h2 {
 }
 
 .active-button {
-	color:green;
+	color:#66CC00;
 }
 
 .weather {
@@ -250,13 +282,20 @@ h1, h2 {
 	border-radius: 5px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #a2c523;
-}*/
+}
 
 
 /* Modal Customizations */
 
 .modal-content { 
-	color: #B3DDF2;
+	font-family: 'Poiret One', sans-serif;
+    font-size: 16px;
+}
+
+.modal-title {
+	width: 300px;
+	margin: 0 auto;
+	
 }
 
 
@@ -292,12 +331,17 @@ h1, h2 {
 		width: 100%;
 		text-align: left;
 		float: none;
+		margin-bottom: 8px;
 	}
 
 	.navbar {
-		margin-bottom: 100px;
+		margin-bottom: 0px;
 		position: relative;
 		min-height: 100%;
+	}
+
+	.sub-menu {
+		margin-bottom: 0px;
 	}
 
 	.nav-text {
@@ -356,7 +400,6 @@ h1, h2 {
   .navbar-nav>li>a {
       padding-top: 5px;
       padding-bottom: 5px;
-      text-align: center;
   }
   .collapse.in{
       display:block !important;
@@ -387,11 +430,18 @@ h1, h2 {
   }
 
   .stars {
-  	margin: 10px 0px 0px 0px;
+  	display: block;
+  	margin: 0 auto;
+  	margin-top: 12px;
   }
 
   .mapwrapper {
   	position: relative;
 	overflow: visible;
   }
+
+  .logo-image{
+  	width: 275px;
+  }
+
 }
