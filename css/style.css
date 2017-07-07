@@ -47,8 +47,11 @@ h3 {
 	width:100%;
 }
 
-  .cC-logo {
-	visibility: hidden;
+.cC-logo {
+	width: 100px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 50px;
 }
 
 .cntr {
@@ -101,6 +104,27 @@ h3 {
 .nav-item:active > .icon {
 	transition-duration: 0.1s;
 	color:#66CC00;
+	font-size: 21px;
+}
+
+.future:hover {
+	transition-duration: 0.25s;
+	color: red; 
+}
+
+.future:hover > .nav-text {
+	transition-duration: 0.25s;
+	color: red;
+}
+
+.future:active {
+	transition-duration: 0.25s;
+	color: red;
+	background-color: #ffcccc;
+}
+.future:active > .icon {
+	transition-duration: 0.1s;
+	color: red;
 	font-size: 21px;
 }
 
@@ -420,8 +444,4 @@ h3 {
   	width: 275px;
   }
 
-  .cC-logo {
-	margin-top:15px;
-	margin-bottom: 15px;
-	}
 }

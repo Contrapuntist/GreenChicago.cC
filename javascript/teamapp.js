@@ -103,9 +103,9 @@ $("#farmersmarket-button").on("click", function() {
       });
 
 $("#recycling-button").on("click", function() {
-        readData("recycling");
-        clearStates();
-        addActive("#recycling-button");
+        //readData("recycling");
+        //clearStates();
+        //addActive("#recycling-button");
       });
 
 $('#aboutUs').on('click', function() { 
@@ -148,7 +148,7 @@ function checkZip(zipCode) {
 	}
 	
 	else {
-	alert("Zip verified");
+	//alert("Zip verified");
 	return true;
 	}
 }

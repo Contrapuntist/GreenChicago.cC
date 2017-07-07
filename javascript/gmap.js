@@ -5,7 +5,7 @@ var pos={
   lng: -87.6298  
 };
 
-var zoomLevel=10;
+var zoomLevel=14;
 
 var contentString;
 
@@ -93,7 +93,7 @@ function displayMap(){
 //function to set map center based on entered zip code
 function zipSearch(zip){
 var geocoder=new google.maps.Geocoder;
-zoomLevel=12;
+zoomLevel=15;
 geocoder.geocode( { 'address': zip}, function(results, status) {
  if (status == google.maps.GeocoderStatus.OK) {
          pos.lat = results[0].geometry.location.lat();
