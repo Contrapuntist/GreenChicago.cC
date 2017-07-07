@@ -110,6 +110,10 @@ $("#recycling-button").on("click", function() {
 
 $('#aboutUs').on('click', function() { 
 	$("#aboutModal").modal("show");
+})
+
+$('#contactInfo').on('click', function() { 
+	$("#contactModal").modal("show");
 }) 
 // Clears active state from all buttons
 function clearStates() {
