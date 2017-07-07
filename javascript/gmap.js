@@ -233,8 +233,7 @@ function placeMarkerAndPanTo(data, map, i) {
 //place marker cluster
 function placeMarkerCluster(){
    markerCluster = new MarkerClusterer(map, markerArray, 
-            {
-              //imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+            {             
               imagePath: 'markerclusterer/images/m',
               minimumClusterSize: 5
             });
@@ -257,9 +256,7 @@ function removeMarkers(){
 
 }
 
-function altfuelWindow (val) { 
 
-  }
 
 
 
