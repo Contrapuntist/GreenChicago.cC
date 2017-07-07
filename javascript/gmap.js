@@ -5,37 +5,17 @@ var pos={
   lng: -87.6298  
 };
 
+var zoomLevel=10;
+
 var contentString;
 
 var readDb=firebase.database();
-//var curCat='alt-fuel';
-var searchZip='60606';
-
-
-// Specifies 1st node in firebase for alt-fuel
-//var dbChild = '-KnQWmrvNl34dXBFVzss'; 
-
-
-//To read data from firebase based on category passed
-/*function readData(curCat){
-  return readDb.ref(curCat).child(dbChild).once('value').then(function(snapshot){
-    var dispData = snapshot.val();
-
-    var key=Object.keys(dispData); 
-    arrayLength = dispData.length;
-    placeMultiMarkers(dispData);
-
-  });
-}*/
-
 
 //To read data from firebase based on category passed
 function readData(curCat){
-  map.setCenter(pos);
-  map.setZoom(10);
+
   curCategory=curCat;
   dispData={};
-  console.log(curCategory);
   removeMarkers();
   
   readDb.ref(curCat).once('value').then(function(snapshot){
@@ -44,10 +24,6 @@ function readData(curCat){
     
     var key=Object.keys(curCatData); 
     dispData = curCatData[key];
-    //var arrayLength = dispData[key].length;
-    console.log(dispData);
-    //console.log(arrayLength);
-    console.log(key);
     placeMultiMarkers();
 
   });
@@ -68,7 +44,6 @@ function initMap() {
           pos.lat = 41.8781;
           pos.lng = -87.6298;
           displayMap();
-          console.log('I am in old browser');
     }
 
 }
@@ -76,12 +51,8 @@ function initMap() {
 //This is to display the markers based on search category and location
 function placeMultiMarkers(){
 
-
-  console.log('I am in multi marker');
-
-  for (i=0; i< dispData.length; i++) { 
+   for (i=0; i< dispData.length; i++) { 
     placeMarkerAndPanTo(dispData[i],map, i);
-
   }
   placeMarkerCluster();
   
@@ -94,7 +65,6 @@ function geoLocSucess(position){
           pos.lat = position.coords.latitude;
           pos.lng = position.coords.longitude;
           displayMap();      
-          console.log('I am in success');
 }
 
 //when location is not enabled in browser or enabled but user blocked it
@@ -102,7 +72,6 @@ function geoLocFail(position){
           pos.lat = 41.8781;
           pos.lng = -87.6298;
           displayMap();    
-          console.log('I am in error');
 }
 
 
@@ -110,20 +79,29 @@ function geoLocFail(position){
 function displayMap(){
     map = new google.maps.Map(document.getElementById('googlemaptest'), {
             center: pos,
-            zoom: 10,
+            zoom: zoomLevel,
             mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
     var initMarker = new google.maps.Marker({
       position: new google.maps.LatLng(pos.lat,pos.lng),
       map: map,     
-      icon: {
-        url: './images/home.png',
-        size: new google.maps.Size(50, 50)
-    }
     });   
 }
 
+
+//function to set map center based on entered zip code
+function zipSearch(zip){
+var geocoder=new google.maps.Geocoder;
+zoomLevel=12;
+geocoder.geocode( { 'address': zip}, function(results, status) {
+ if (status == google.maps.GeocoderStatus.OK) {
+         pos.lat = results[0].geometry.location.lat();
+         pos.lng = results[0].geometry.location.lng();
+     }
+  displayMap();
+});
+}
 
 /*This function will put the place markers in the map for given 
 latitude and longitude*/
@@ -255,12 +233,13 @@ function placeMarkerAndPanTo(data, map, i) {
 //place marker cluster
 function placeMarkerCluster(){
    markerCluster = new MarkerClusterer(map, markerArray, 
-            {
-              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+            {             
+              imagePath: 'markerclusterer/images/m',
               minimumClusterSize: 5
             });
       
 }
+
 
 /*Remove markers from the map*/
 function removeMarkers(){
@@ -277,9 +256,7 @@ function removeMarkers(){
 
 }
 
-function altfuelWindow (val) { 
 
-  }
 
 
 

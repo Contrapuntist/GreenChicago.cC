@@ -137,8 +137,10 @@ $("#zip-button").on("click", function(event) {
 	event.preventDefault();
 	var zipInput = $("#zip-input").val().trim();
 	var zipNumber = parseInt(zipInput);
-	checkZip(zipNumber)
-	});
+	if(checkZip(zipNumber)){
+		zipSearch(zipInput);
+	}
+});
 
 function checkZip(zipCode) {
 	if (chicagoZipcodes.indexOf(zipCode) === -1) {
