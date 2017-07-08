@@ -1,7 +1,7 @@
 
 
     // Here we are building the URL we need to query the database
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?" +
       "q=Chicago,Illinois&units=imperial&appid=" + weatherKey;
 
     // Here we run our AJAX call to the OpenWeatherMap API
