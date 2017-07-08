@@ -94,31 +94,30 @@
 
 				</div>
 
-
-				  	<footer class="footer">
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default sub-menu">
-        <div class="container-fluid sub-menu">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a id="aboutUs" href="#">About</a></li>
-              <li><a id='contactInfo' href="#">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-	</footer>
+			 	<footer class="footer">
+			      <!-- Static navbar -->
+			      <nav class="navbar navbar-default sub-menu">
+			        <div class="container-fluid sub-menu">
+			          <div class="navbar-header">
+			            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			              <span class="sr-only">Toggle navigation</span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			            </button>
+			          </div>
+			          <div id="navbar" class="navbar-collapse collapse">
+			            <ul class="nav navbar-nav">
+			              <li><a id="aboutUs" href="#">About</a></li>
+			              <li><a id='contactInfo' href="#">Contact</a></li>
+			            </ul>
+			          </div><!--/.nav-collapse -->
+			        </div><!--/.container-fluid -->
+			      </nav>
+				</footer>
 		    	
 
-	    	</div>
+	</div>
 
 			<!-- Map content-->
 			<div class="mapwrapper">
@@ -155,18 +154,48 @@
 			      </div>
 			      <div id="mod-details" class="modal-body">
 			        <p>Team camelCase is Miguel Cano, Luc Fewer, Amanda Gault, Josh Miller, and Gowri Rajasekaran.</p>
-
-					<p><img class="cC-logo" src="images/cC_logo.svg"></p>
-					
+							<p><img class="cC-logo" src="images/cC_logo.svg"></p>			
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
-	
   			</div>
 			</div>
-			
+			<div id="wrongZip" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			      </div>
+			      <div id="mod-details" class="modal-body">
+			        <p>You did not enter a valid Chicago zipcode. (Chicago suburbs not included)</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+  			</div>
+			</div>
+			<div id="rightZip" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			      </div>
+			      <div id="mod-details" class="modal-body">
+			        <p>Valid Chicago zipcode entered. Now find your closest GreenSpot.</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+  			</div>
+			</div>
+
+
 		</div> 
 			
 	  <!-- Firebase, jQuery and JS file calls --> 	
@@ -198,5 +227,3 @@
 		<script type="text/javascript" src='javascript/teamapp.js'></script>    
 	</body>
 </html>
-
-

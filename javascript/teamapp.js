@@ -1,72 +1,56 @@
 $(document).ready(function() {
 
 
-// App object 
-  var appObj = {
-
-    // global variables 
-    //database: firebase.database(),
-    address: null,
-
-    // functions 
-    init: function () {
-      console.log ('app gowri initiated')
-    } 
-
-
-
-  };
-
 var goodaddress = null; 
 
 //call the function to load map on page load
 initMap();
 
-// app initiate function 
-appObj.init();
 
 
+// future option to expand search and use USPS address 
+// verification API to confirm valid address on input/search 
 
-	$('#searchbtn').on('click', function() { 
-		var adr = null;
-		console.log('search button clicked');
-		adr = $("#address").val().trim();  
-		appObj.address = adr.split().join("+");
-		console.log(appObj.address);
-		verifyAddress(appObj.address);
+	// $('#searchbtn').on('click', function() { 
+	// 	var adr = null;
+	// 	console.log('search button clicked');
+	// 	adr = $("#address").val().trim();  
+	// 	appObj.address = adr.split().join("+");
+	// 	console.log(appObj.address);
+	// 	verifyAddress(appObj.address);
 
-	});
+	// });
 
 
-	function verifyAddress (address) { 
+	// function verifyAddress (address) { 
 
-		var googleGeoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + macgoogAPI ;
+	// 	var googleGeoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + macgoogAPI ;
 
-		// AddressValidateRequest USERID=uspsID 
+	// 	// AddressValidateRequest USERID=uspsID 
 
-		$.ajax({
-			url: googleGeoURL, 
-			type: 'Get',
-		})
-		.done(function(data) {
-			console.log(data);
-			console.log("success");
-			console.log(data.status); 
-			if (data.status === "ok") { 
-				return goodaddress = true;
-			} else { 
-				alert("you didn't enter a real address");
-			}
-			console.log(goodaddress)
-		})
-		.fail(function() {
-			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
-		});
+	// 	$.ajax({
+	// 		url: googleGeoURL, 
+	// 		type: 'Get',
+	// 	})
+	// 	.done(function(data) {
+	// 		console.log(data);
+	// 		console.log("success");
+	// 		console.log(data.status); 
+	// 		if (data.status === "ok") { 
+	// 			return goodaddress = true;
+	// 		} else { 
+	// 			alert("you didn't enter a real address");
+	// 		}
+	// 		console.log(goodaddress)
+	// 	})
+	// 	.fail(function() {
+	// 		console.log("error");
+	// 	})
+	// 	.always(function() {
+	// 		console.log("complete");
+	// 	});
 
-	}	
+	// }	
 
 });
 
@@ -144,12 +128,15 @@ $("#zip-button").on("click", function(event) {
 
 function checkZip(zipCode) {
 	if (chicagoZipcodes.indexOf(zipCode) === -1) {
-		alert("Please enter a valid Chicago zip code.")
+		// alert("Please enter a valid Chicago zip code.") 
+		$('#wrongZip').modal("show");
 	}
 	
 	else {
-	//alert("Zip verified");
-	return true;
+		// alert("Zip verified"); 
+		$('#rightZip').modal("show");
+		return true;
+
 	}
 }
 
