@@ -195,8 +195,8 @@ function placeMarkerAndPanTo(data, map, i) {
       var marketName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var marketAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
-      var marketDate = '<div class="iw-subTitle">Dates: </div><p>' + dispData[i].startDate + ' to ' + dispData[i].endDate + '</p>';;
-      var marketTime = '<div class="iw-subTitle">Name</div><p>' + dispData[i].startTime + ' to ' + dispData[i].endTime + '</p>';;
+      var marketDate = '<div class="iw-subTitle">Dates</div><p>' + dispData[i].startDate + ' to ' + dispData[i].endDate + '</p>';;
+      var marketTime = '<div class="iw-subTitle">Time</div><p>' + dispData[i].startTime + ' to ' + dispData[i].endTime + '</p>';;
 
       var winContent = '<div class="iw-scroll">' + marketName + marketAddr + marketDate + marketTime + '</div>';  
 
