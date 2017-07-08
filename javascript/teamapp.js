@@ -134,7 +134,7 @@ function checkZip(zipCode) {
 	
 	else {
 		// alert("Zip verified"); 
-		$('#rightZip').modal("show");
+		//$('#rightZip').modal("show");
 		return true;
 
 	}
