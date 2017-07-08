@@ -130,7 +130,7 @@ function placeMarkerAndPanTo(data, map, i) {
       var statName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
-      var winContent = '<div class="iw-scroll">' + statName + statAddr + '</div>';  
+      var winContent = '<div>' + statName + statAddr + '</div>';  
 
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>';
 
@@ -144,7 +144,7 @@ function placeMarkerAndPanTo(data, map, i) {
       var roofAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
    
-      var winContent = '<div class="iw-scroll">' + roofAddr + '</div>';  
+      var winContent = '<div>' + roofAddr + '</div>';  
 
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>';
 
@@ -158,7 +158,7 @@ function placeMarkerAndPanTo(data, map, i) {
       var parkName = '<div class="iw-subTitle">Name</div><p>' + dispData[i].name + '</p>';
       var parkAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].address + '<br>' 
       + dispData[i].city + ', ' + dispData[i].state + '</p>';
-      var winContent = '<div class="iw-scroll">' + parkName + parkAddr + '</div>';  
+      var winContent = '<div>' + parkName + parkAddr + '</div>';  
 
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>';
     
@@ -171,12 +171,17 @@ function placeMarkerAndPanTo(data, map, i) {
 
       var statAddr = '<div class="iw-subTitle">Address</div><p>' + dispData[i].stAddress1 + '</p>';
 
+      var totDocks = '<div class="iw-subTitle">Dock Details</div><p>Total Docks: '+ dispData[i].totalDocks + '</p>';
+
+
+      // Option to include additional dock info when/if Divvy api realtime.  
+
       // var statDocks = '<div class="iw-subTitle">Dock Details</div><p>Total Docks: '+ dispData[i].totalDocks + '<br> Bikes available: ' + dispData[i].availableBikes + 
       //   '<br> Docks available: ' + dispData[i].availableDocks +'</p>';
 
       // var statUpdate = '<div class="iw-subTitle">Last Update</div><p>' + dispData[i].lastCommunicationTime + '</p>';
       
-      var winContent = '<div class="iw-scroll">' + statAddr +'</div>';  
+      var winContent = '<div>' + statAddr + totDocks + '</div>';  
 
       contentString = '<div class="infoWinContainer iw-scroll">' + winCat + winContent + '</div>'; 
 
@@ -211,7 +216,6 @@ function placeMarkerAndPanTo(data, map, i) {
       icon: {
         url: iconImg,
         size: new google.maps.Size(30, 30)
-
     }
     });
     
@@ -226,7 +230,7 @@ function placeMarkerAndPanTo(data, map, i) {
 
       infowindow.open(map, marker);
       
-    });
+    }); 
 
 }
 
