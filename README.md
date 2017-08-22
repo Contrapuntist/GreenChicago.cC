@@ -37,6 +37,8 @@ How does one easily live a sustainable lifestyle in Chicago? Although resources 
 ## Link to App
 (https://contrapuntist.github.io/GreenChicago.cC/ "Link to app") 
 
+
+
 ## Development Team 
 
 * Josh Miller 
